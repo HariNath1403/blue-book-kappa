@@ -1,0 +1,44 @@
+// 1. Nav Bar
+.nav {
+  padding: calc(#{$space-small + $space-sub}/ 2) $space-mini;
+  background-color: $color-main;
+  @include flex-box-row;
+
+  &__logo {
+    color: $color-background;
+
+    img {
+      width: $space-margin;
+      height: auto;
+      transform: translateY(calc(#{$space-supersmall}/ 2));
+    }
+  }
+
+  &__list {
+    @include flex-box-row;
+    gap: $space-mini;
+
+    &--item {
+      list-style: none;
+    }
+
+    &--btn {
+      @include box-shadow;
+      @include flex-box-col;
+      padding: $space-supersmall;
+      background-color: $color-background;
+      width: $space-decent;
+
+      &--icon {
+        color: $color-shade;
+        margin-bottom: $space-supersmall;
+        font-size: $text-small;
+      }
+
+      &--txt {
+        color: $color-shade;
+        font-weight: 500;
+      }
+    }
+  }
+}

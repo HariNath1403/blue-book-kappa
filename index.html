@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="images/logo/logo-dark.png" type="image/png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Blue Book &kappa; | Convenient Drug Info</title>
+  </head>
+  <body>
+    <div class="container full-page" id="main">
+      <nav id="nav" class="nav">
+        <div class="nav__logo">
+          <img src="images/logo/logo-light.png" alt="Logo" />
+        </div>
+        <ul class="nav__list">
+          <li class="nav__list--item">
+            <button class="nav__list--btn">
+              <ion-icon name="medkit" class="nav__list--btn--icon"></ion-icon>
+              <span class="nav__list--btn--txt">Formulary</span>
+            </button>
+          </li>
+          <li class="nav__list--item">
+            <button class="nav__list--btn">
+              <ion-icon name="earth" class="nav__list--btn--icon"></ion-icon>
+              <span class="nav__list--btn--txt">CPGs</span>
+            </button>
+          </li>
+          <li class="nav__list--item">
+            <button class="nav__list--btn">
+              <ion-icon
+                name="construct"
+                class="nav__list--btn--icon"
+              ></ion-icon>
+              <span class="nav__list--btn--txt">Others</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <div id="workspace" class="workspace">
+        <div id="formulary" class="formulary">
+          <div class="formulary__search">
+            <ion-icon name="search" class="formulary__search--icon"></ion-icon>
+            <input
+              type="text"
+              class="formulary__search--input"
+              placeholder="search blue book ..."
+            />
+            <button class="formulary__search--clear">X</button>
+          </div>
+          <div class="formulary__intro">
+            <p class="formulary__intro--txt">
+              <span class="formulary__intro--txt--focus">
+                <img src="images/logo/logo-light.png" alt="Logo" />
+
+                <span>Blue Book Kappa</span>
+              </span>
+              <span>Designed & Developed by</span>
+              <span>PF Hari, PKD Tampin</span>
+            </p>
+            <div class="formulary__intro--pic">
+              <img
+                src="images/attribution/tampin-free.png"
+                alt="PKD Tampin Logo"
+              />
+              <img src="images/attribution/hari.jpg" alt="PF Hari" />
+            </div>
+            <p class="formulary__intro--updated">
+              <span>Last updated in</span>
+              <span id="last-updated">December 2024</span>
+            </p>
+          </div>
+
+          <div class="formulary__results">
+            <ul class="formulary__results--list"></ul>
+          </div>
+        </div>
+      </div>
+      <div id="target" class="target">
+        <div class="target__box">
+          <div class="target__box--row">
+            <h3 class="target__box--header">Generic Name</h3>
+            <p class="target__box--txt">Abacavir Sulphate 300mg tablet</p>
+          </div>
+          <div class="target__box--row">
+            <h3 class="target__box--header">Brand Name</h3>
+            <p class="target__box--txt">Ziagen</p>
+          </div>
+          <div class="target__box--row">
+            <h3 class="target__box--header">Prescriber Category</h3>
+            <p class="target__box--txt">A*</p>
+          </div>
+          <div class="target__box--row">
+            <h3 class="target__box--header">Indication(s)</h3>
+            <p class="target__box--txt">
+              Antiretroviral combination therapy of HIV infection in adults and
+              adolescents from 12 years of age.
+            </p>
+          </div>
+          <div class="target__box--row">
+            <h3 class="target__box--header">Dosage</h3>
+            <p class="target__box--txt">
+              Adult:300mg twice daily or 600mg dailyChildren:i. Weighing 14 to
+              20kg: one-half of a scored abacavir tablet twice dailyii. Weighing
+              ?20kg to 25kg: one-half of a scored abacavir tablet in the morning
+              and one whole tablet in the eveningiii. Weighing at least 25kg:
+              according to adult dose
+            </p>
+          </div>
+          <div class="target__box--row">
+            <h3 class="target__box--header">Prescribing Restrictions</h3>
+            <p class="target__box--txt">
+              i. Patients unsuitable or failed other HAART treatmentii. Patients
+              who have renal impairment (CrCl < 50ml/min) when Abacavir and
+              Lamivudine fixed-dose combination is not recommended
+            </p>
+          </div>
+          <div class="target__box--row">
+            <h3 class="target__box--header">Use in Pregnancy</h3>
+            <p class="target__box--txt">
+              This drug should be used during pregnancy only if the benefit
+              outweighs the risk to the fetus.
+            </p>
+            <div class="target__box--row--link">
+              <span class="target__box--tag">Source:</span>
+              <a
+                href="https://www.drugs.com/pregnancy/abacavir.html"
+                target="_blank"
+                class="target__box--link"
+                >Drugs.com&mdash;pregnancy&mdash;abacavir</a
+              >
+            </div>
+          </div>
+          <div class="target__box--row">
+            <h3 class="target__box--header">Use while Breastfeeding</h3>
+            <p class="target__box--txt">
+              Abacavir appears in breastmilk in small quantities. Very little
+              information is available on the safety of its use during
+              breastfeeding.
+            </p>
+            <div class="target__box--row--link">
+              <span class="target__box--tag">Source:</span>
+              <a
+                href="https://www.drugs.com/breastfeeding/abacavir.html"
+                target="_blank"
+                class="target__box--link"
+                >Drugs.com&mdash;breastfeeding&mdash;abacavir</a
+              >
+            </div>
+          </div>
+          <div class="target__box--row">
+            <h3 class="target__box--header">Drug Code</h3>
+            <p class="target__box--txt">J05AF06-183-T10-01-XXX</p>
+          </div>
+        </div>
+        <div class="target__exit">
+          <button class="target__exit--btn">X</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script type="module" src="js/controller.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

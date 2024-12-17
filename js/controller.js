@@ -1,6 +1,7 @@
 import * as config from "./config.js";
 import * as model from "./model.js";
 import homeView from "./views/homeView.js";
+import targetView from "./views/targetView.js";
 
 const url = config.apiUrl;
 
@@ -29,19 +30,29 @@ const loadFormularySearchEngine = function () {
 
 const loadTargetDrugInfo = function (drug) {
   const target = model.getTargetDrugInfo(drug);
-  console.log(target);
-  homeView.loadTargetPage(target);
+  targetView.loadTargetPage(target);
 };
 
 const exitTargetPage = function () {
-  homeView.closeTargetPage();
+  targetView.closeTargetPage();
 };
 
 const initFormularyFxs = function () {
   homeView.handlerClearSearchInput(clearFormularySearchInputBox);
   homeView.handlerActivateSearch(loadFormularySearchEngine);
-  homeView.handlerCloseTargetPage(exitTargetPage);
+  targetView.handlerCloseTargetPage(exitTargetPage);
 };
 
 document.addEventListener("DOMContentLoaded", initFx);
 initFormularyFxs();
+
+history.pushState(null, null, location.href);
+
+window.onpopstate = function () {
+  if (window.history.state === null) {
+    history.pushState(null, null, location.href);
+    window.location.reload();
+  } else {
+    history.back();
+  }
+};

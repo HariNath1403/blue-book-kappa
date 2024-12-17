@@ -1,0 +1,99 @@
+#main {
+  position: relative;
+}
+
+#target {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $color-background;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+}
+
+.target {
+  padding: $space-standard $space-small;
+
+  &__box {
+    overflow-y: scroll;
+    height: 85vh;
+    border-top: 1px solid $color-shade;
+    border-bottom: 1px solid $color-shade;
+    padding: $space-small $space-supersmall;
+    @include flex-box-col;
+    align-items: flex-start;
+    gap: $space-small;
+
+    &--row {
+      @include flex-box-col;
+      align-items: flex-start;
+      gap: $space-supersmall;
+
+      &--link {
+        @include flex-box-row;
+        gap: $space-mini;
+        // margin-top: $space-supersmall;
+      }
+    }
+
+    &--header {
+      font-size: calc(#{$text-mini + $text-small}/ 2);
+      font-weight: 700;
+      color: $color-shade;
+    }
+
+    &--txt {
+      font-size: $text-mini;
+      font-weight: 400;
+      text-align: justify;
+      line-height: 1.4;
+    }
+
+    &--list {
+      font-size: $text-mini;
+      font-weight: 400;
+      @include flex-box-col;
+      align-items: flex-start;
+      gap: $space-supersmall;
+
+      &--index {
+        padding-left: $space-supersmall;
+        list-style: none;
+        line-height: 1.6;
+        text-align: justify;
+      }
+    }
+
+    &--tag {
+      font-size: calc(#{$text-mini + $text-supersmall}/ 2);
+      font-size: $text-supersmall;
+
+      padding: $space-supersmall $space-mini;
+      background-color: $color-accent;
+      color: $color-shade;
+    }
+
+    &--link {
+      font-size: calc(#{$text-mini + $text-supersmall}/ 2);
+      font-size: $text-supersmall;
+      color: $color-grey;
+    }
+  }
+
+  &__exit {
+    position: absolute;
+    top: $space-small;
+    right: $space-sub;
+
+    &--btn {
+      font-size: $text-mini;
+      background-color: $color-alert;
+      color: $color-background;
+      padding: $space-supersmall $space-mini;
+      @include box-shadow;
+    }
+  }
+}

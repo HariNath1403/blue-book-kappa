@@ -1,8 +1,3 @@
-/*
-const apiUrl =
-  "mongodb+srv://harivinnathan:<db_password>@cluster0.dsexi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const dbPassword = "Y0AsZxShOsLtAyku";
-*/
 export let allData;
 export const allDrugs = [];
 
@@ -26,7 +21,8 @@ export const loadFormularySearch = function (str) {
 };
 
 export const getTargetDrugInfo = function (drug) {
-  const target = allData.find((obj) => obj["Generic Name"] === drug);
+  const target = allData.find((obj) => obj["Generic"] === drug);
 
+  console.log(target);
   return target;
 };

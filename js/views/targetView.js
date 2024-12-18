@@ -42,7 +42,7 @@ class TargetView extends Master {
   loadShorterText(txt) {
     if (!txt || txt === "ERR") return "N/A";
     let txtArr = txt.split(".");
-    const regex = /(AU|US|UK|Comments)/g;
+    const regex = /(AU|US|UK|Comments|Comment)/g;
 
     if (txtArr.length > 2) {
       return (
@@ -57,7 +57,8 @@ class TargetView extends Master {
   }
 
   formatWithLineBreaks(text) {
-    const regex = /(i|ii|iii|iv|v|vi|vii|viii|ix)[.)]/g;
+    // const regex = /(ii|iii|iv|v|vi|vii|viii|ix)[.)]/g;
+    const regex = /(?<=.)\b(i|ii|iii|iv|v|vi|vii|viii|ix)[.)]/g;
 
     let formattedText = text.replace(regex, "<br>$&");
 
@@ -66,17 +67,22 @@ class TargetView extends Master {
     formattedText = formattedText.replace(childBreakPattern, "<br>$&");
 
     formattedText = formattedText.replace(
-      /\bCHILD\b/g,
+      /\bCHILD\b/gi,
       "<strong>CHILD</strong>"
     );
 
     formattedText = formattedText.replace(
-      /\bADULT\b/g,
+      /\bCHILDREN\b/gi,
+      "<strong>CHILDREN</strong>"
+    );
+
+    formattedText = formattedText.replace(
+      /\bADULT\b/gi,
       "<strong>ADULT</strong>"
     );
 
     formattedText = formattedText.replace(
-      /\bADULTS\b/g,
+      /\bADULTS\b/gi,
       "<strong>ADULTS</strong>"
     );
 

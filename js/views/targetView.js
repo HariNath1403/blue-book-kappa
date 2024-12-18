@@ -127,9 +127,7 @@ class TargetView extends Master {
       </div>
       <div class="target__box--row">
         <h3 class="target__box--header">Prescribing Restrictions</h3>
-        <p class="target__box--txt">${this.formatWithLineBreaks(
-          restrictions
-        )}</p>
+        <p class="target__box--txt">${restrictions}</p>
       </div>
        <div class="target__box--row">
         <h3 class="target__box--header">Common Side Effects</h3>

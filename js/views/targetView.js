@@ -41,20 +41,29 @@ class TargetView extends Master {
 
   loadShorterText(txt) {
     if (!txt || txt === "ERR") return "N/A";
-    const txtArr = txt.split(".");
+    let txtArr = txt.split(".");
+    const regex = /(AU|US|UK|Comments)/g;
+
     if (txtArr.length > 2) {
-      return txtArr[0] + ". " + txtArr[1] + ".";
+      return (
+        txtArr[0].replace(regex, ".<br>&mdash;$&") +
+        ". " +
+        txtArr[1].replace(regex, ".<br>&mdash;$&") +
+        "."
+      );
     } else {
-      return txtArr[0] + ".";
+      return txtArr[0].replace(regex, ".<br>&mdash;$&") + ".";
     }
   }
 
   formatWithLineBreaks(text) {
-    // const regex = /\b(i{1,3}v?|v|[1-9]+)[.)](?=\S)/g;
-    const regex = /\b(i{1,3}v?|v)[.)]/g;
-    let formattedText = text.replace(regex, (match) => {
-      return `<br>${match.trim()}`;
-    });
+    const regex = /(i|ii|iii|iv|v|vi|vii|viii|ix)[.)]/g;
+
+    let formattedText = text.replace(regex, "<br>$&");
+
+    const childBreakPattern = /(Child:|Children:)/g;
+
+    formattedText = formattedText.replace(childBreakPattern, "<br>$&");
 
     formattedText = formattedText.replace(
       /\bCHILD\b/g,
@@ -64,6 +73,11 @@ class TargetView extends Master {
     formattedText = formattedText.replace(
       /\bADULT\b/g,
       "<strong>ADULT</strong>"
+    );
+
+    formattedText = formattedText.replace(
+      /\bADULTS\b/g,
+      "<strong>ADULTS</strong>"
     );
 
     formattedText = formattedText.replace(
@@ -113,7 +127,9 @@ class TargetView extends Master {
       </div>
       <div class="target__box--row">
         <h3 class="target__box--header">Prescribing Restrictions</h3>
-        <p class="target__box--txt">${restrictions}</p>
+        <p class="target__box--txt">${this.formatWithLineBreaks(
+          restrictions
+        )}</p>
       </div>
        <div class="target__box--row">
         <h3 class="target__box--header">Common Side Effects</h3>

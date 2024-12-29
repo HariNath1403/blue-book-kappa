@@ -1,4 +1,12 @@
 export default class Master {
+  // All (Master Controls)
+  navFormulary = document.getElementById("nav-load-formulary");
+  navCalculator = document.getElementById("nav-load-calculator");
+
+  pageFormulary = document.getElementById("formulary");
+  pageCalculator = document.getElementById("calculator");
+
+  // Formulary
   formularyIntro = document.querySelector(".formulary__intro");
   formularyResultsList = document.querySelector(".formulary__results--list");
   blueBookSearchBar = document.querySelector(".formulary__search--input");

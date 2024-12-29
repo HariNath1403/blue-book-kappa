@@ -57,40 +57,39 @@ class TargetView extends Master {
   }
 
   formatWithLineBreaks(text) {
-    // const regex = /(ii|iii|iv|v|vi|vii|viii|ix)[.)]/g;
-    const regex = /(?<=.)\b(i|ii|iii|iv|v|vi|vii|viii|ix)[.)]/g;
-
+    const regex = /(ii|iii|iv|v|vi|vii|viii|ix)[.)]/g;
+    // const regex = /(?<=.)\b(i|ii|iii|iv|v|vi|vii|viii|ix)[.)]/g;
     let formattedText = text.replace(regex, "<br>$&");
 
+    const initialBreak = /(?<=.)\b(i)[.)]/g;
+
+    formattedText = formattedText.replace(initialBreak, "<br>$&");
+
+    const maintenanceBreak = /(Maintenance|Usual maintenance|MAINTENANCE)/g;
+    formattedText = formattedText.replace(maintenanceBreak, "<br>$&");
+
     const childBreakPattern = /(Child:|Children:)/g;
-
     formattedText = formattedText.replace(childBreakPattern, "<br>$&");
-
     formattedText = formattedText.replace(
       /\bCHILD\b/gi,
       "<strong>CHILD</strong>"
     );
-
     formattedText = formattedText.replace(
       /\bCHILDREN\b/gi,
       "<strong>CHILDREN</strong>"
     );
-
     formattedText = formattedText.replace(
       /\bADULT\b/gi,
       "<strong>ADULT</strong>"
     );
-
     formattedText = formattedText.replace(
       /\bADULTS\b/gi,
       "<strong>ADULTS</strong>"
     );
-
     formattedText = formattedText.replace(
       /\bmaximum|max\b/gi,
       "<strong>MAXIMUM</strong>"
     );
-
     return formattedText;
   }
 

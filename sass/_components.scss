@@ -19,6 +19,7 @@ body {
   background-color: $color-background;
 }
 
+// Utilities
 .container {
   max-width: $max-width;
   margin: 0 auto;
@@ -31,6 +32,26 @@ body {
 
 .hide-display {
   display: none !important;
+}
+
+.underline {
+  border-bottom: 2px solid $color-main;
+}
+
+.highlight {
+  padding: calc(#{$space-supersmall}/ 2) $space-supersmall;
+  background-color: $color-accent;
+  // color: $color-shade;
+  font-weight: 500;
+}
+
+.shaded-table-region {
+  color: $color-background;
+  background-color: $color-shade;
+}
+
+.small-margin-top {
+  margin-top: $space-small;
 }
 
 // Mixins
@@ -54,3 +75,6 @@ body {
 }
 
 // Temporary
+// #calc-ascvd {
+//   display: none;
+// }

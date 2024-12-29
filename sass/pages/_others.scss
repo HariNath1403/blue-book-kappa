@@ -16,7 +16,9 @@
 
   &__list {
     @include flex-box-row;
-    gap: $space-mini;
+    width: 100%;
+    // justify-content: space-evenly;
+    // gap: $space-mini;
 
     &--item {
       list-style: none;

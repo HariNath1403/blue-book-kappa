@@ -16,12 +16,12 @@
   <body>
     <div class="container full-page" id="main">
       <nav id="nav" class="nav">
-        <div class="nav__logo">
+        <!-- <div class="nav__logo">
           <img src="images/logo/logo-light.png" alt="Logo" />
-        </div>
+        </div> -->
         <ul class="nav__list">
           <li class="nav__list--item">
-            <button class="nav__list--btn">
+            <button class="nav__list--btn" id="nav-load-formulary">
               <ion-icon name="medkit" class="nav__list--btn--icon"></ion-icon>
               <span class="nav__list--btn--txt">Formulary</span>
             </button>
@@ -30,6 +30,15 @@
             <button class="nav__list--btn">
               <ion-icon name="earth" class="nav__list--btn--icon"></ion-icon>
               <span class="nav__list--btn--txt">CPGs</span>
+            </button>
+          </li>
+          <li class="nav__list--item">
+            <button class="nav__list--btn" id="nav-load-calculator">
+              <ion-icon
+                name="calculator"
+                class="nav__list--btn--icon"
+              ></ion-icon>
+              <span class="nav__list--btn--txt">Calculator</span>
             </button>
           </li>
           <li class="nav__list--item">
@@ -81,6 +90,2657 @@
             <ul class="formulary__results--list"></ul>
           </div>
         </div>
+        <div id="calculator" class="calculator hide-display">
+          <div class="calc__interface">
+            <h2 class="calc__header">Calculators</h2>
+            <div class="calc__search">
+              <input
+                type="text"
+                class="calc__search--input"
+                placeholder="type here..."
+              />
+              <button class="calc__search--btn">
+                <ion-icon
+                  name="search"
+                  class="calc__search--btn--icon"
+                ></ion-icon>
+                <span class="calc__search--btn--txt">Search</span>
+              </button>
+            </div>
+            <ul class="calc__list">
+              <!-- <li class="calc__list--btn" data-id="id">
+                <h3 class="calc__list--btn--header">Header 1</h3>
+                <h4 class="calc__list--btn--sub">Sub Header Text 1</h4>
+              </li> -->
+            </ul>
+          </div>
+          <div id="calculator-IBW" class="calculator__box hide-display">
+            <h2 class="calculator__header">Body Weight Adjustment</h2>
+            <h3 class="calculator__header--sub">IBW, ABW or BMI</h3>
+            <form action="#" class="calculator__form" id="calculator-IBW--form">
+              <label for="calculator-IBW--type" class="calculator__form--label"
+                >Calculation Type</label
+              >
+              <div class="calculator__form--radio">
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-IBW--type"
+                    value="IBW"
+                    required
+                  />
+                  Ideal Body Weight
+                </label>
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-IBW--type"
+                    value="ABW"
+                  />
+                  Adjusted Body Weight
+                </label>
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-IBW--type"
+                    value="BMI"
+                  />
+                  Body Mass Index
+                </label>
+              </div>
+              <label
+                for="calculator-IBW--gender"
+                class="calculator__form--label"
+                >Gender</label
+              >
+              <div class="calculator__form--radio">
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-IBW--gender"
+                    value="Male"
+                    required
+                  />
+                  Male
+                </label>
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-IBW--gender"
+                    value="Female"
+                  />
+                  Female
+                </label>
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-IBW--weight"
+                  class="calculator__form--label"
+                  >Current Weight</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="calculator-IBW--weight"
+                  placeholder="Weight (in kg)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-IBW--height"
+                  class="calculator__form--label"
+                  >Height</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="calculator-IBW--height"
+                  placeholder="Height (in cm)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--submit">
+                <button
+                  class="calculator__form--btn"
+                  id="calculator-IBW-submit"
+                >
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calculator-IBW-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div class="calculator__result" id="calculator-IBW--result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div class="calculator__result--jombotron">
+                <span id="calculator-IBW--type--result">IBW = </span>
+                <span id="calculator-IBW--calc--result">65 kg</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Patient with Weight = 78 kg and Height = 169.5 cm has an Ideal
+                Body Weight (IBW) of 65 kg. <br />
+                <br />IBW estimates the "healthy" weight for an individual based
+                on height, gender, and sometimes frame size, assuming average
+                muscle mass and minimal body fat.
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header">
+                  Ideal Body Weight
+                </h3>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index underline">
+                    Male:
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    IBW (kg) = 50 + 0.9 * (Ht - 152 cm)
+                  </li>
+                </ul>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index underline">
+                    Female:
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    IBW (kg) = 45.5 + 0.9 * (Ht - 152 cm)
+                  </li>
+                </ul>
+              </div>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header">
+                  Adjusted Body Weight
+                </h3>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    ABW (kg) = IBW + 0.4 * (W<sub>Actual</sub> - IBW)
+                  </li>
+                </ul>
+              </div>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header">
+                  Body Mass Index
+                </h3>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    BMI = W (kg) / Height<sup>2</sup> (m<sup>2</sup>)
+                  </li>
+                </ul>
+                <div class="calculator__ref--container--row">
+                  <table class="calculator__ref--container--table">
+                    <thead>
+                      <tr>
+                        <th>BMI</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>&lt;18.5</td>
+                        <td>Underweight</td>
+                      </tr>
+                      <tr>
+                        <td>18.5 - 24.9</td>
+                        <td>Normal</td>
+                      </tr>
+                      <tr>
+                        <td>25.0 - 29.9</td>
+                        <td>Overweight</td>
+                      </tr>
+                      <tr>
+                        <td>&ge; 30.0</td>
+                        <td>Obese</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="calc-pugh" class="calculator__box">
+            <h2 class="calculator__header">Child-Pugh Score</h2>
+            <h3 class="calculator__header--sub">For Cirrhosis Mortality</h3>
+            <form action="#" id="calc-pugh-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label for="pugh-bilirubin" class="calculator__form--label"
+                  >Total Bilirubin</label
+                >
+                <select
+                  id="pugh-bilirubin"
+                  name="pugh-bilirubin"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="1">&lt; 34.2 &mu;mol/L</option>
+                  <option value="2">34.2 - 51.3 &mu;mol/L</option>
+                  <option value="3">&gt; 51.3 &mu;mol/L</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="pugh-albumin" class="calculator__form--label"
+                  >Albumin</label
+                >
+                <select
+                  id="pugh-albumin"
+                  name="pugh-albumin"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="1">&gt; 35 g/L</option>
+                  <option value="2">28 - 35 g/L</option>
+                  <option value="3">&lt; 28 g/L</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="pugh-inr" class="calculator__form--label"
+                  >INR</label
+                >
+                <select
+                  id="pugh-inr"
+                  name="pugh-inr"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="1">&lt; 1.7</option>
+                  <option value="2">1.7 - 2.3</option>
+                  <option value="3">&gt; 2.3</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="pugh-ascites" class="calculator__form--label"
+                  >Ascites</label
+                >
+                <select
+                  id="pugh-ascites"
+                  name="pugh-ascites"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="1">Absent</option>
+                  <option value="2">Slight</option>
+                  <option value="3">Moderate</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="pugh-encephalopathy" class="calculator__form--label"
+                  >Encephalopathy</label
+                >
+                <div class="calculator__form--radio">
+                  <label class="calculator__form--radio--label">
+                    <input
+                      type="radio"
+                      class="calculator__form--radio--btn"
+                      name="pugh-encephalopathy"
+                      value="1"
+                      checked
+                    />
+                    <p class="calculator__form--radio--label--txt">
+                      <span>Grade 0:</span>
+                      <span
+                        >Normal consciousness, personality, neurological
+                        examination, electroencephalogram</span
+                      >
+                    </p>
+                  </label>
+                  <label class="calculator__form--radio--label">
+                    <input
+                      type="radio"
+                      class="calculator__form--radio--btn"
+                      name="pugh-encephalopathy"
+                      value="2"
+                    />
+                    <p class="calculator__form--radio--label--txt">
+                      <span>Grade 1:</span>
+                      <span
+                        >Restless, sleep disturbed, irritable/agitated, tremor,
+                        impaired handwriting, 5 cps waves</span
+                      >
+                    </p>
+                  </label>
+                  <label class="calculator__form--radio--label">
+                    <input
+                      type="radio"
+                      class="calculator__form--radio--btn"
+                      name="pugh-encephalopathy"
+                      value="2"
+                    />
+                    <p class="calculator__form--radio--label--txt">
+                      <span>Grade 2:</span>
+                      <span
+                        >Lethargic, time-disoriented, inappropriate, asterixis,
+                        ataxia, slow triphasic waves</span
+                      >
+                    </p>
+                  </label>
+                  <label class="calculator__form--radio--label">
+                    <input
+                      type="radio"
+                      class="calculator__form--radio--btn"
+                      name="pugh-encephalopathy"
+                      value="3"
+                    />
+                    <p class="calculator__form--radio--label--txt">
+                      <span>Grade 3:</span>
+                      <span
+                        >Somnolent, stuporous, place-disoriented, hyperactive
+                        reflexes, rigidity, slower waves</span
+                      >
+                    </p>
+                  </label>
+                  <label class="calculator__form--radio--label">
+                    <input
+                      type="radio"
+                      class="calculator__form--radio--btn"
+                      name="pugh-encephalopathy"
+                      value="3"
+                    />
+                    <p class="calculator__form--radio--label--txt">
+                      <span>Grade 4:</span>
+                      <span
+                        >Unrousable coma, no personality/behavior, decerebrate,
+                        slow 2-3 cps delta activity</span
+                      >
+                    </p>
+                  </label>
+                </div>
+              </div>
+              <div class="calculator__form--submit">
+                <button class="calculator__form--btn" id="calc-pugh-submit">
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-pugh-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div class="calculator__result" id="calc-pugh-result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>6 points</span>
+              </div>
+              <p class="calculator__result--explaination">
+                &mdash; Child Class A
+                <br />
+                &mdash; Life Expectancy : 15-20 years
+                <br />
+                &mdash; Abdominal peri-operative mortality : 10%
+                <br />
+                <br />
+                <span class="highlight">Calculating</span> the Child-Pugh Score
+                helps assess the severity of chronic liver disease, particularly
+                <span class="highlight">cirrhosis</span> and provides a
+                standardized way to estimate prognosis and guide clinical
+                decision-making.
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header">
+                  Child-Pugh Scoring Guide
+                </h3>
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Parameters
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Parameter</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Bilirubin (mg/dL)</td>
+                        <td>&lt;2</td>
+                        <td>2-3</td>
+                        <td>&gt;3</td>
+                      </tr>
+                      <tr>
+                        <td>Albumin (g/dL)</td>
+                        <td>&gt;3.5</td>
+                        <td>2.8-3.5</td>
+                        <td>&lt;2.8</td>
+                      </tr>
+                      <tr>
+                        <td>INR</td>
+                        <td>&lt;1.7</td>
+                        <td>1.7 - 2.3</td>
+                        <td>&gt; 2.3</td>
+                      </tr>
+                      <tr>
+                        <td>Ascites</td>
+                        <td>None</td>
+                        <td>Mild</td>
+                        <td>Moderate or Severe</td>
+                      </tr>
+                      <tr>
+                        <td>Hepatic Encephalopathy</td>
+                        <td>None</td>
+                        <td>Grade 1 or 2</td>
+                        <td>Grade 3 or 4</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Scoring
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Total Score</th>
+                        <th>Class</th>
+                        <th>Prognosis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>5 - 6</td>
+                        <td>Child-Pugh A</td>
+                        <td>Well-compensated disease</td>
+                      </tr>
+                      <tr>
+                        <td>7 - 9</td>
+                        <td>Child-Pugh B</td>
+                        <td>Significant functional compromise</td>
+                      </tr>
+                      <tr>
+                        <td>10 - 15</td>
+                        <td>Child-Pugh C</td>
+                        <td>Decompensated disease (poor prognosis)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="https://www.mdcalc.com/calc/340/child-pugh-score-cirrhosis-mortality"
+                        target="_blank"
+                        >MdCalc.com</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="calculator-creatinine" class="calculator__box hide-display">
+            <h2 class="calculator__header">Creatinine Clearance</h2>
+            <h3 class="calculator__header--sub">Calculate the Estimated GFR</h3>
+            <form
+              action="#"
+              id="calculator-creatinine--form"
+              class="calculator__form"
+            >
+              <label
+                for="calculator-creatinine--gender"
+                class="calculator__form--label"
+                >Gender</label
+              >
+              <div class="calculator__form--radio">
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-creatinine--gender"
+                    value="Male"
+                    required
+                  />
+                  Male
+                </label>
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-creatinine--gender"
+                    value="Female"
+                  />
+                  Female
+                </label>
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-creatinine--age"
+                  class="calculator__form--label"
+                  >Age / Date of Birth</label
+                >
+                <div class="calculator__form--row--col">
+                  <input
+                    type="number"
+                    class="calculator__form--input--col"
+                    id="calculator-creatinine--age"
+                    placeholder="Age (Yr)"
+                    required
+                  />
+                  <span>Or</span>
+                  <input
+                    type="date"
+                    class="calculator__form--input--col calculator__form--input--col--long"
+                    id="calculator-creatinine--dob"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-creatinine--weight"
+                  class="calculator__form--label"
+                  >Weight</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="calculator-creatinine--weight"
+                  placeholder="Weight (in kg)"
+                  required
+                />
+              </div>
+
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-creatinine--scr"
+                  class="calculator__form--label"
+                  >Serum Creatinine</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="calculator-creatinine--scr"
+                  placeholder="SCr (in &mu;mol/L)"
+                  required
+                />
+              </div>
+              <div class="slider-container">
+                <span class="slider-label">mg/dL</span>
+                <input
+                  type="range"
+                  class="slider"
+                  id="yesNoSlider-creatinine"
+                  min="0"
+                  max="1"
+                  step="1"
+                  value="1"
+                />
+                <span class="slider-label">&mu;mol/L</span>
+              </div>
+              <label
+                for="calculator-creatinine--race"
+                class="calculator__form--label"
+                >Race</label
+              >
+              <div class="calculator__form--radio">
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-creatinine--race"
+                    value="Not"
+                    required
+                    checked
+                  />
+                  Not African-American
+                </label>
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calculator-creatinine--race"
+                    value="African"
+                  />
+                  African-American
+                </label>
+              </div>
+              <div class="calculator__form--submit">
+                <button
+                  class="calculator__form--btn"
+                  id="calculator-creatinine-submit"
+                >
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calculator-creatinine-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div class="calculator__result" id="calculator-creatinine--result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>CrCl = 67 ml/min</span>
+                <span>eGFR = 57 ml/min/1.73 m<sup>2</sup></span>
+              </div>
+              <p class="calculator__result--explaination">
+                The patient's CrCl is 66.5 mL/min, indicating moderately reduced
+                kidney function (CKD stage 2-3) <br />
+                <strong>AND</strong> The patient's eGFR is 56.8 mL/min/1.73 m²,
+                which correlates with CKD stage 3A.<br />
+                <strong>Creatinine Clearance (CrCl)</strong> is used for
+                individualized drug dosing in clinical practice. Commonly used
+                for patients on medications that require renal adjustment (e.g.
+                aminoglycosides, digoxin). <br />
+                <strong>Estimated Glomerular Filtration Rate (EGFR)</strong> is
+                used for diagnosing and staging CKD (e.g. CKD stages 1-5). Aids
+                in determining the need for dialysis or transplantation.
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header">
+                  Creatinine Clearance (ml/min) <br />&mdash; Cockcroft-Gault
+                  Equation
+                </h3>
+
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index underline">
+                    Male:
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    <span style="display: inline; vertical-align: middle"
+                      >CrCl =
+                    </span>
+                    <span
+                      style="
+                        display: inline-block;
+                        vertical-align: middle;
+                        text-align: center;
+                        position: relative;
+                      "
+                    >
+                      <span>(140 - age) * weight (kg) * 1.23</span>
+                      <span
+                        style="
+                          position: absolute;
+                          top: 50%;
+                          left: 0;
+                          right: 0;
+                          border-top: 1px solid #038c7f;
+                        "
+                      ></span>
+                      <span style="display: block; text-align: center"
+                        >SCr (μmol/L)</span
+                      >
+                    </span>
+                  </li>
+                </ul>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index underline">
+                    Female:
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    <span style="display: inline; vertical-align: middle"
+                      >CrCl =
+                    </span>
+                    <span
+                      style="
+                        display: inline-block;
+                        vertical-align: middle;
+                        text-align: center;
+                        position: relative;
+                      "
+                    >
+                      <span>(140 - age) * weight (kg) * 1.04</span>
+                      <span
+                        style="
+                          position: absolute;
+                          top: 50%;
+                          left: 0;
+                          right: 0;
+                          border-top: 1px solid #038c7f;
+                        "
+                      ></span>
+                      <span style="display: block; text-align: center"
+                        >SCr (μmol/L)</span
+                      >
+                    </span>
+                  </li>
+                </ul>
+
+                <h3 class="calculator__ref--container--header">
+                  Estimated GFR (ml/min/1.73 m<sup>2</sup>)<br />&mdash; MDRD
+                  Equation
+                </h3>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    <span style="display: inline; vertical-align: middle"
+                      >eGFR =
+                      <br />
+                      175 *
+                    </span>
+                    (<span
+                      style="
+                        display: inline-block;
+                        vertical-align: middle;
+                        text-align: center;
+                        position: relative;
+                        padding: 0 5px;
+                      "
+                    >
+                      <span>SCr</span>
+                      <span
+                        style="
+                          position: absolute;
+                          top: 50%;
+                          left: 0;
+                          right: 0;
+                          border-top: 1px solid #038c7f;
+                          margin-top: 3px;
+                        "
+                      ></span>
+                      <span style="display: block; text-align: center"
+                        >88.4</span
+                      > </span
+                    >)
+                    <span style="display: inline; vertical-align: middle">
+                      <sup>-1.154</sup> * Age
+                    </span>
+                    <span style="display: inline; vertical-align: middle">
+                      <sup>-0.203</sup> * Sex * Race
+                    </span>
+                  </li>
+
+                  <li class="calculator__ref--container--index underline">
+                    Sex
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    Male: 1 & Female: 1.212
+                  </li>
+                  <li class="calculator__ref--container--index underline">
+                    Race
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    African American: 1.159, Else 1
+                  </li>
+                </ul>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Stage</th>
+                        <th>CrCl</th>
+                        <th>Summary</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Stage 1</td>
+                        <td>&ge; 90 ml/min</td>
+                        <td>Normal or Proteinuria (but normal GFR)</td>
+                      </tr>
+                      <tr>
+                        <td>Stage 2</td>
+                        <td>60 - 89 ml/min</td>
+                        <td>Kidney damage without symptoms</td>
+                      </tr>
+                      <tr>
+                        <td>Stage 3A</td>
+                        <td>45 - 59 ml/min</td>
+                        <td>
+                          Kidney function starts declining but no severe
+                          symptoms yet
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Stage 3B</td>
+                        <td>30 - 44 ml/min</td>
+                        <td>
+                          Significant loss of kidney function, with emerging
+                          symptoms (e.g., fluid retention, hypertension)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Stage 4</td>
+                        <td>15 - 29 ml/min</td>
+                        <td>
+                          Significantly impaired &mdash; potential for
+                          complications (e.g. hyperkalemia, anemia)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Stage 5</td>
+                        <td>&lt; 15 ml/min</td>
+                        <td>
+                          ESRD &mdash; requiring dialysis or kidney transplant
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h3
+                    class="calculator__ref--container--header small-margin-top"
+                  >
+                    Summary Table
+                  </h3>
+                  <div class="calculator__ref--container--row">
+                    <table
+                      class="calculator__ref--container--table calculator__ref--container--table--small"
+                    >
+                      <thead>
+                        <tr>
+                          <th>ClCr</th>
+                          <th>Feature</th>
+                          <th>eGFR</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Cockcroft-Gault Equation</td>
+                          <th>Method</th>
+                          <td>Modification of Diet in Renal Disease (MDRD)</td>
+                        </tr>
+                        <tr>
+                          <td>Drug dosing</td>
+                          <th>Purpose</th>
+                          <td>Kidney disease staging</td>
+                        </tr>
+                        <tr>
+                          <td>Less accurate (due to creatinine secretion)</td>
+                          <th>Accuracy</th>
+                          <td>More accurate for GFR</td>
+                        </tr>
+                        <tr>
+                          <td>ml/min</td>
+                          <th>Units</th>
+                          <td>ml/min/1.73 m<sup>2</sup></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="calculator-calcium" class="calculator__box hide-display">
+            <h2 class="calculator__header">Corrected Calcium</h2>
+            <h3 class="calculator__header--sub">For Hypoalbuminaemia</h3>
+            <form
+              action="#"
+              id="calculator-calcium--form"
+              class="calculator__form"
+            >
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-calcium--calcium"
+                  class="calculator__form--label"
+                  >Measured Calcium (in mmol/L)</label
+                >
+                <input
+                  type="number"
+                  id="calculator-calcium--calcium"
+                  class="calculator__form--input"
+                  placeholder="Serum Calcium"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-calcium--albumin"
+                  class="calculator__form--label"
+                  >Measured Albumin (in g/L)</label
+                >
+                <input
+                  type="number"
+                  id="calculator-calcium--albumin"
+                  class="calculator__form--input"
+                  placeholder="Serum Albumin"
+                  required
+                />
+              </div>
+              <div class="calculator__form--submit">
+                <button
+                  class="calculator__form--btn"
+                  id="calculator-calcium--submit"
+                >
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calculator-calcium--reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div id="calculator-calcium--result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>Corrected calcium level:</span>
+                <span>2.20 mmol/L</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Albumin is a protein in the blood that binds calcium, meaning
+                that a significant portion of the total calcium is carried
+                around by albumin. If albumin levels are low (hypoalbuminemia),
+                the total calcium level might be low even though the level of
+                free, biologically active calcium is normal.
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header">
+                  Corrected Calcium
+                </h3>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    Corrected calcium (mmol/L) =
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    Serum calcium (mmol/L) + 0.02 * [40 - Serum albumin (g/L)]
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="https://www.thecalculator.co/health/Calcium-Correction-Calculator-616.html"
+                        target="_blank"
+                        >www.thecalculator.co</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Summary Table
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table class="calculator__ref--container--table">
+                    <thead>
+                      <tr>
+                        <th>Hypercalcaemia</th>
+                        <th>Serum Calcium (mmol/L)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Normal</td>
+                        <td>2.1 - 2.6</td>
+                      </tr>
+                      <tr>
+                        <td>Mild</td>
+                        <td>2.6 - 3.0</td>
+                      </tr>
+                      <tr>
+                        <td>Moderate</td>
+                        <td>3.0 - 3.5</td>
+                      </tr>
+                      <tr>
+                        <td>Severe</td>
+                        <td>3.5 - 4.0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="calc-sodium" class="calculator__box hide-display">
+            <h2 class="calculator__header">Corrected Sodium</h2>
+            <h3 class="calculator__header--sub">For Hyperglycaemia</h3>
+            <form action="#" id="calc-sodium-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label for="calc-sodium-sodium" class="calculator__form--label"
+                  >Sodium Level (in mmol/L)</label
+                >
+                <input
+                  type="number"
+                  id="calc-sodium-sodium"
+                  class="calculator__form--input"
+                  placeholder="Sodium Level"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="calc-sodium-glucose" class="calculator__form--label"
+                  >Glucose Level (mmol/L)</label
+                >
+                <input
+                  type="number"
+                  id="calc-sodium-glucose"
+                  class="calculator__form--input"
+                  placeholder="Glucose Level"
+                  required
+                />
+              </div>
+              <div class="calculator__form--submit">
+                <button class="calculator__form--btn" id="calc-sodium-submit">
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-sodium-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div id="calc-sodium--result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>Corrected sodium level:</span>
+                <span>134.18 mmol/L</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Corrected sodium is calculated in patients with hyperglycemia
+                because elevated blood glucose levels cause translocation of
+                water from the intracellular to the extracellular space. This
+                dilution effect can falsely lower the sodium concentration
+                measured in the blood. <br />
+                <strong>Key reasons</strong> for calculating corrected sodium:
+                <br />
+                &mdash; Assess true sodium status: It helps in determining the
+                actual sodium level to guide appropriate treatment.
+                <br />
+                &mdash; Avoid overcorrection: Misinterpreting hyponatremia (low
+                sodium) may lead to overtreatment, which can be dangerous.
+                <br />
+                &mdash; Guide fluid therapy: Knowing the corrected sodium helps
+                tailor fluid management in hyperglycemic crises like diabetic
+                ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS).
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <ul class="calculator__ref--container--list">
+                <li class="calculator__ref--container--index">
+                  Corrected sodium (mmol/L) =
+                </li>
+                <li class="calculator__ref--container--index">
+                  Sodium + [0.288 * (Glucose - 5.5)]
+                </li>
+                <li class="calculator__ref--container--index">
+                  <p class="calculator__ref--container--src">
+                    Source: Sarawak Handbook of Medical Emergencies 3rd Edition
+                  </p>
+                </li>
+              </ul>
+              <div class="calculator__ref--container--row">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Correlation Table
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Glucose Level (mmol/L)</th>
+                        <th>Effect on Sodium</th>
+                        <th>Corrected Sodium Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>5.5 (Normal)</th>
+                        <td>No correction needed</td>
+                        <td>Sodium reflects true status.</td>
+                      </tr>
+                      <tr>
+                        <th>6 - 10</th>
+                        <td>Slight decrease</td>
+                        <td>
+                          Corrected sodium remains close to measured sodium,
+                          usually no clinical significance.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>10 - 20</th>
+                        <td>Moderate decrease</td>
+                        <td>
+                          Corrected sodium is higher than measured sodium. Check
+                          for mild dilutional hyponatremia.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>&gt; 20</th>
+                        <td>Significant decrease</td>
+                        <td>
+                          Marked dilutional effect on sodium. Corrected sodium
+                          must be calculated to guide therapy.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="calculator__ref--container--row">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Summary Table
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Sodium Level (mmol/L)</th>
+                        <th>Classification</th>
+                        <th>Patient's Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>&lt; 120</th>
+                        <td>Severe Hyponatremia</td>
+                        <td>
+                          Life-threatening. Risk of seizures, coma, and brain
+                          herniation. Requires urgent treatment.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>120 - 129</th>
+                        <td>Moderate Hyponatremia</td>
+                        <td>
+                          Significant sodium deficit. Symptoms like confusion,
+                          nausea, and muscle cramps may occur.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>130 - 135</th>
+                        <td>Mild Hyponatremia</td>
+                        <td>
+                          Borderline low. Often asymptomatic but may worsen in
+                          conditions like heart failure or cirrhosis.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>135 - 145</th>
+                        <td>Normal Range</td>
+                        <td>Normal sodium homeostasis.</td>
+                      </tr>
+                      <tr>
+                        <th>146 - 150</th>
+                        <td>Mild Hypernatremia</td>
+                        <td>
+                          May cause mild symptoms like thirst or lethargy.
+                          Requires monitoring and correction of underlying
+                          causes.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>151 - 160</th>
+                        <td>Moderate Hypernatremia</td>
+                        <td>
+                          Risk of neurologic symptoms, including confusion and
+                          muscle twitching. Needs prompt intervention.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>&gt; 160</th>
+                        <td>Severe Hypernatremia</td>
+                        <td>
+                          Life-threatening. Risk of brain shrinkage, seizures,
+                          and coma. Requires urgent treatment.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="calc-ganzoni" class="calculator__box hide-display">
+            <h2 class="calculator__header">Ganzoni Equation</h2>
+            <h3 class="calculator__header--sub">
+              For Iron Deficiency Anaemia (IDA)
+            </h3>
+            <form action="#" id="calc-ganzoni-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label for="calc-ganzoni-weight" class="calculator__form--label"
+                  >Body Weight</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="calc-ganzoni-weight"
+                  placeholder="Weight (in kg)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="calc-ganzoni-target" class="calculator__form--label"
+                  >Target Hb</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="calc-ganzoni-target"
+                  placeholder="Hb level (in g/dL)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="calc-ganzoni-actual" class="calculator__form--label"
+                  >Actual Hb</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="calc-ganzoni-actual"
+                  placeholder="Hb level (in g/dL)"
+                  required
+                />
+              </div>
+
+              <label
+                for="calculator-creatinine--gender"
+                class="calculator__form--label"
+                >Iron Stores In</label
+              >
+              <div class="calculator__form--radio">
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calc-ganzoni-stores"
+                    value="Adults"
+                    checked
+                  />
+                  Adults
+                </label>
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calc-ganzoni-stores"
+                    value="PaedsG"
+                  />
+                  Children &GreaterEqual; 35 kg
+                </label>
+                <label class="calculator__form--radio--label">
+                  <input
+                    type="radio"
+                    class="calculator__form--radio--btn"
+                    name="calc-ganzoni-stores"
+                    value="PaedsL"
+                  />
+                  Children &lt; 35 kg
+                </label>
+              </div>
+
+              <div class="calculator__form--submit">
+                <button class="calculator__form--btn" id="calc-ganzoni-submit">
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-ganzoni-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div class="calculator__result" id="calc-ganzoni-result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>Calculated Fe Deficit</span>
+                <span>= 1000 mg</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Iron supplementation is needed for iron deficiency anemia (IDA)
+                because iron is essential for producing hemoglobin, which
+                carries oxygen in the blood. Without enough iron, the body can't
+                produce enough healthy red blood cells, leading to fatigue and
+                weakness.<br />
+                <br />
+                Pregnant women are more prone to IDA due to increased iron
+                demands for both their own blood volume and the developing
+                fetus. Insufficient iron during pregnancy can lead to
+                complications like preterm birth and low birth weight, making
+                iron supplementation crucial.
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header">
+                  Ganzoni Equation &mdash; Fe Deficit
+                </h3>
+
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index underline">
+                    Adults & Children (&GreaterEqual; 35 kg):
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    W * (Hb <sub>Target</sub> - Hb <sub>Actual</sub>) * 2.4 +
+                    500
+                  </li>
+                </ul>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index underline">
+                    Children (&lt; 35 kg):
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    W * (Hb <sub>Target</sub> - Hb <sub>Actual</sub>) * 2.4 +
+                    (15 * W)
+                  </li>
+                </ul>
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Iron Treatments for IDA
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--smaller"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Treatment</th>
+                        <th>Dose</th>
+                        <th>Expected Hb &uArr;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Oral Iron</td>
+                        <td>
+                          100-200 mg elemental iron daily (e.g., ferrous sulfate
+                          325 mg 2-3 times daily)
+                        </td>
+                        <td>~1-2 g/dL in 4 weeks</td>
+                      </tr>
+                      <tr>
+                        <td>Intravenous (IV) Iron</td>
+                        <td>
+                          Depends on preparation:<br />
+                          -<span class="highlight">Ferric carboxymaltose</span>:
+                          500-1,000 mg per session<br />
+                          -<span class="highlight">Iron sucrose</span>: 200 mg
+                          per session (multiple doses needed)
+                        </td>
+                        <td>~1-2 g/dL in 2-4 weeks</td>
+                      </tr>
+                      <tr>
+                        <td>Iron Dextran (IV)</td>
+                        <td>
+                          Total dose infusion (calculated based on iron deficit,
+                          up to 1,000 mg per session)
+                        </td>
+                        <td>~1-2 g/dL in 2-4 weeks</td>
+                      </tr>
+                      <tr>
+                        <td>Blood Transfusion</td>
+                        <td>
+                          1-2 units of packed red blood cells (PRBCs) for severe
+                          anaemia (Hb &lt;7-8 g/dL)
+                        </td>
+                        <td>Immediate (~1 g/dL per unit)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Cosmofer vs Venofer
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--smaller"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Aspect</th>
+                        <th>Cosmofer&trade;</th>
+                        <th>Venofer&trade;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Generic Name</td>
+                        <td>Iron Dextran</td>
+                        <td>Iron Sucrose</td>
+                      </tr>
+                      <tr>
+                        <td>Elemental Fe per ampoule</td>
+                        <td>100 mg per 2 ml ampoule</td>
+                        <td>100 mg per 5 ml ampoule</td>
+                      </tr>
+                      <tr>
+                        <td>Indication</td>
+                        <td>
+                          For patients with iron deficiency anaemia who cannot
+                          tolerate oral iron or require rapid repletion of iron
+                          stores.
+                        </td>
+                        <td>
+                          For iron deficiency anaemia when oral iron is
+                          ineffective or not tolerated.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Administration</td>
+                        <td>
+                          Can be given as a slow IV infusion, intramuscular
+                          injection, or total dose infusion (TDI).
+                        </td>
+                        <td>
+                          Administered via IV infusion or slow IV injection in
+                          divided doses.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Maximum Single Dose</td>
+                        <td>
+                          Up to 20 mg/kg body weight. Max: up to 1,000 mg per
+                          session. Remaining dose is given after 1 week gap.
+                        </td>
+                        <td>200 mg per session (repeated doses needed).</td>
+                      </tr>
+                      <tr>
+                        <td>Test Dose</td>
+                        <td>
+                          25 mg diluted in 50 mL saline, infused over 15
+                          minutes. Observe for hypersensitivity reactions.
+                        </td>
+                        <td>
+                          25 mg diluted in 50 mL saline, infused over 15
+                          minutes. Observe for hypersensitivity reactions.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Frequency</td>
+                        <td>
+                          Single total dose infusion or multiple sessions as
+                          needed.
+                        </td>
+                        <td>
+                          Multiple sessions required to achieve total iron
+                          requirement.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Side Effects</td>
+                        <td>
+                          Risk of hypersensitivity, hypotension, and injection
+                          site reactions.
+                        </td>
+                        <td>
+                          Lower risk of hypersensitivity compared to iron
+                          dextran. Injection site reactions and transient taste
+                          disturbances may occur.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Duration of Infusion</td>
+                        <td>3-4 hours (for total dose infusion).</td>
+                        <td>15-30 minutes (per session).</td>
+                      </tr>
+                      <tr>
+                        <td>Special Considerations</td>
+                        <td>
+                          Requires close monitoring for anaphylaxis, especially
+                          with first dose.
+                        </td>
+                        <td>
+                          Lower risk of severe reactions; requires test dose but
+                          less monitoring compared to iron dextran.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>In Pregnancy</td>
+                        <td>
+                          Contraindicated during 1st trimester. Preferrably not
+                          used during breastfeeding.
+                        </td>
+                        <td>
+                          Contraindicated during 1st trimester. Has more safety
+                          data in second & third trimester. Preferred during
+                          lactation.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Quick Reference for number of ampoules required
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th colspan="8">Increase in Hb Required (g/dL)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th class="shaded-table-region">Weight</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                      </tr>
+                      <tr>
+                        <td>40 kg</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                      </tr>
+                      <tr>
+                        <td>45 kg</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                      </tr>
+                      <tr>
+                        <td>50 kg</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                      </tr>
+                      <tr>
+                        <td>55 kg</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                      </tr>
+                      <tr>
+                        <td>60 kg</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>14</td>
+                        <td>15</td>
+                      </tr>
+                      <tr>
+                        <td>65 kg</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>16</td>
+                      </tr>
+                      <tr>
+                        <td>70 kg</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>15</td>
+                        <td>17</td>
+                      </tr>
+                      <tr>
+                        <td>75 kg</td>
+                        <td>7</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>12</td>
+                        <td>14</td>
+                        <td>16</td>
+                        <td>18</td>
+                      </tr>
+                      <tr>
+                        <td>80 kg</td>
+                        <td>7</td>
+                        <td>9</td>
+                        <td>11</td>
+                        <td>13</td>
+                        <td>15</td>
+                        <td>17</td>
+                        <td>18</td>
+                      </tr>
+                      <tr>
+                        <td>85 kg</td>
+                        <td>7</td>
+                        <td>9</td>
+                        <td>11</td>
+                        <td>13</td>
+                        <td>15</td>
+                        <td>17</td>
+                        <td>19</td>
+                      </tr>
+                      <tr>
+                        <td>90 kg</td>
+                        <td>7</td>
+                        <td>9</td>
+                        <td>11</td>
+                        <td>14</td>
+                        <td>16</td>
+                        <td>18</td>
+                        <td>20</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="calc-map" class="calculator__box hide-display">
+            <h2 class="calculator__header">Mean Arterial Pressure</h2>
+            <h3 class="calculator__header--sub">
+              Average pressure in the arteries
+            </h3>
+            <form action="#" id="calc-map-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label for="calc-map-sbp" class="calculator__form--label"
+                  >Systolic Blood Pressure</label
+                >
+                <input
+                  type="number"
+                  id="calc-map-sbp"
+                  class="calculator__form--input"
+                  placeholder="SBP (in mmHg)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="calc-map-dbp" class="calculator__form--label"
+                  >Diastolic Blood Pressure
+                </label>
+                <input
+                  type="number"
+                  id="calc-map-dbp"
+                  class="calculator__form--input"
+                  placeholder="DBP (in mmHg)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--submit">
+                <button class="calculator__form--btn" id="calc-map-submit">
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-map-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div id="calc-map-result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>Mean Arterial Pressure</span>
+                <span>93.33 mmHg</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Patient with systolic blood pressure of 120 mmHg and a diastolic
+                blood pressure of 80 mmHg has a Mean Arterial Pressure (MAP) of
+                93.33 mmHg.
+                <br />
+                MAP is calculated because it represents the average pressure in
+                the arteries during one cardiac cycle (both systole and
+                diastole).
+                <br />
+                It is a critical parameter in assessing
+                <strong>organ perfusion</strong> and determining whether blood
+                flow to vital organs is adequate.
+                <br />
+                1. Monitoring critical conditions (in ICU)
+                <br />
+                2. Guides fluid management, vasopressor use, or antihypertensive
+                treatments
+                <br />
+                3. Assessing shock / sepsis & evaluate cardiovascular health
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <ul class="calculator__ref--container--list">
+                <li class="calculator__ref--container--index">MAP (mmHg)</li>
+                <li class="calculator__ref--container--index">
+                  = DBP + [(SBP - DBP) / 3]
+                </li>
+                <li class="calculator__ref--container--index">
+                  <p class="calculator__ref--container--src">
+                    Source:
+                    <a
+                      href="https://www.mdcalc.com/calc/74/mean-arterial-pressure-map"
+                      target="_blank"
+                      >MdCalc.com</a
+                    >
+                  </p>
+                </li>
+              </ul>
+              <div class="calculator__ref--container--row">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  MAP Classification
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--smaller"
+                  >
+                    <thead>
+                      <tr>
+                        <th>MAP</th>
+                        <th>Status</th>
+                        <th>Interventions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>&lt; 60 (Hypotension / Low MAP)</td>
+                        <td>
+                          Inadequate organ perfusion, risk of organ failure, and
+                          ischemia.
+                        </td>
+                        <td>
+                          Increase IV fluids, use vasopressors, and treat the
+                          underlying cause.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>60 - 70 (Borderline Low MAP)</td>
+                        <td>
+                          Suboptimal perfusion; organ function may be at risk in
+                          critically ill patients.
+                        </td>
+                        <td>
+                          Monitor closely, consider fluid resuscitation or
+                          vasopressor therapy.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>70 - 100 (Normal MAP)</td>
+                        <td>
+                          Adequate organ perfusion. Normal function for most
+                          patients.
+                        </td>
+                        <td>
+                          No intervention needed if the patient is stable.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>&gt; 100 (Elevated MAP)</td>
+                        <td>
+                          Increased cardiac workload; risk of
+                          hypertension-related complications.
+                        </td>
+                        <td>
+                          Use antihypertensives, diuretics, or treat the
+                          underlying cause.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>&gt; 120 (Hypertension / High MAP)</td>
+                        <td>
+                          Risk of organ damage, including stroke, heart failure,
+                          or kidney damage.
+                        </td>
+                        <td>
+                          Immediate intervention with antihypertensives or
+                          critical management.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="calc-opiate" class="calculator__box hide-display">
+            <h2 class="calculator__header">Opiate Conversion</h2>
+            <h3 class="calculator__header--sub">
+              For different types & routes of opiates
+            </h3>
+            <form action="#" id="calc-opiate-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label for="calc-opiate-from" class="calculator__form--label"
+                  >Convert FROM</label
+                >
+                <select
+                  id="calc-opiate-from"
+                  name="calc-opiate-from"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="morphine-oral">Morphine (Oral)</option>
+                  <option value="morphine-parenteral">
+                    Morphine (Parenteral)
+                  </option>
+                  <option value="buprenorphine-sl">Buprenorphine (SL)</option>
+                  <option value="buprenorphine-parenteral">
+                    Buprenorphine (Parenteral)
+                  </option>
+                  <option value="codeine-oral">Codeine (Oral)</option>
+                  <option value="codeine-parenteral">
+                    Codeine (Parenteral)
+                  </option>
+                  <option value="fentanyl-parenteral">
+                    FentaNYL (Parenteral)
+                  </option>
+                  <option value="hydrocodone-oral">HYDROcodone (Oral)</option>
+                  <option value="hydromorphone-parenteral">
+                    HYDROmorphone (Parenteral)
+                  </option>
+                  <option value="hydromorphone-oral">
+                    HYDROmorphone (Oral)
+                  </option>
+                  <option value="meperidine-oral">Meperidine (Oral)</option>
+                  <option value="meperidine-parenteral">
+                    Meperidine (Parenteral)
+                  </option>
+                  <option value="oxycodone-oral">OxyCODONE (Oral)</option>
+                  <option value="oxycodone-parenteral">
+                    OxyCODONE (Parenteral)
+                  </option>
+                  <option value="oxymorphone-parenteral">
+                    OxyMORphone (Parenteral)
+                  </option>
+                  <option value="oxymorphone-oral">OxyMORphone (Oral)</option>
+                  <option value="tramadol-oral">TraMADol (Oral)</option>
+                  <option value="tramadol-parenteral">
+                    TraMADol (Parenteral)
+                  </option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="calc-opiate-dose" class="calculator__form--label"
+                  >Total dose (mg)</label
+                >
+                <input
+                  type="number"
+                  id="calc-opiate-dose"
+                  class="calculator__form--input"
+                  placeholder="Dose (in mg)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="calc-opiate-to" class="calculator__form--label"
+                  >Convert TO</label
+                >
+                <select
+                  id="calc-opiate-to"
+                  name="calc-opiate-to"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="morphine-oral">Morphine (Oral)</option>
+                  <option value="morphine-parenteral">
+                    Morphine (Parenteral)
+                  </option>
+                  <option value="buprenorphine-sl">Buprenorphine (SL)</option>
+                  <option value="buprenorphine-parenteral">
+                    Buprenorphine (Parenteral)
+                  </option>
+                  <option value="codeine-oral">Codeine (Oral)</option>
+                  <option value="codeine-parenteral">
+                    Codeine (Parenteral)
+                  </option>
+                  <option value="fentanyl-parenteral">
+                    FentaNYL (Parenteral)
+                  </option>
+                  <option value="hydrocodone-oral">HYDROcodone (Oral)</option>
+                  <option value="hydromorphone-parenteral">
+                    HYDROmorphone (Parenteral)
+                  </option>
+                  <option value="hydromorphone-oral">
+                    HYDROmorphone (Oral)
+                  </option>
+                  <option value="meperidine-oral">Meperidine (Oral)</option>
+                  <option value="meperidine-parenteral">
+                    Meperidine (Parenteral)
+                  </option>
+                  <option value="oxycodone-oral">OxyCODONE (Oral)</option>
+                  <option value="oxycodone-parenteral">
+                    OxyCODONE (Parenteral)
+                  </option>
+                  <option value="oxymorphone-parenteral">
+                    OxyMORphone (Parenteral)
+                  </option>
+                  <option value="oxymorphone-oral">OxyMORphone (Oral)</option>
+                  <option value="tramadol-oral">TraMADol (Oral)</option>
+                  <option value="tramadol-parenteral">
+                    TraMADol (Parenteral)
+                  </option>
+                </select>
+              </div>
+              <div class="calculator__form--submit">
+                <button class="calculator__form--btn" id="calc-opiate-submit">
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-opiate-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div id="calc-opiate-result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>Approximate Dose:</span>
+                <span>90 mg</span>
+              </div>
+              <p class="calculator__result--explaination">
+                <span class="calculator__result--explaination--highlight"
+                  >30 mg of Morphine (Parenteral)</span
+                >
+                is approximately <strong>EQUIVALENT</strong> to
+                <span class="calculator__result--explaination--highlight"
+                  >90 mg of Morphine (Oral)</span
+                >.
+                <br />
+                Advice:
+                <br />
+                &mdash; Opiates vary widely in terms of potency. Always double
+                check doses and units.
+                <br />
+                &mdash;
+                <span class="calculator__result--explaination--highlight"
+                  >Decreasing the dose of the new opiate by 33-50%</span
+                >
+                is strongly recommended unless the patient is in severe
+                uncontrolled pain on the current regimen.
+                <br />
+                &mdash; Consultation with a pain management physician or
+                pharmacist is recommended if converting to and from multiple
+                opiates or from fentaNYL.
+              </p> -->
+            </div>
+
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container--row">
+                <table
+                  class="calculator__ref--container--table calculator__ref--container--table--smaller"
+                >
+                  <thead>
+                    <tr>
+                      <th>Analgesic</th>
+                      <th>Form</th>
+                      <th>Morphine Equivalents (mg)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Morphine</td>
+                      <td>Oral</td>
+                      <td>30</td>
+                    </tr>
+                    <tr>
+                      <td>Morphine</td>
+                      <td>Parenteral</td>
+                      <td>10</td>
+                    </tr>
+                    <tr>
+                      <td>Buprenorphine</td>
+                      <td>SL</td>
+                      <td>0.4</td>
+                    </tr>
+                    <tr>
+                      <td>Buprenorphine</td>
+                      <td>Parenteral</td>
+                      <td>0.3</td>
+                    </tr>
+                    <tr>
+                      <td>Codeine</td>
+                      <td>Oral</td>
+                      <td>200</td>
+                    </tr>
+                    <tr>
+                      <td>Codeine</td>
+                      <td>Parenteral</td>
+                      <td>100</td>
+                    </tr>
+                    <tr>
+                      <td>FentaNYL</td>
+                      <td>Parenteral</td>
+                      <td>0.1</td>
+                    </tr>
+                    <tr>
+                      <td>HYDROcodone</td>
+                      <td>Oral</td>
+                      <td>30</td>
+                    </tr>
+                    <tr>
+                      <td>HYDROmorphone</td>
+                      <td>Parenteral</td>
+                      <td>1.5</td>
+                    </tr>
+                    <tr>
+                      <td>HYDROmorphone</td>
+                      <td>Oral</td>
+                      <td>7.5</td>
+                    </tr>
+                    <tr>
+                      <td>Meperidine</td>
+                      <td>Oral</td>
+                      <td>300</td>
+                    </tr>
+                    <tr>
+                      <td>Meperidine</td>
+                      <td>Parenteral</td>
+                      <td>100</td>
+                    </tr>
+                    <tr>
+                      <td>OxyCODONE</td>
+                      <td>Oral</td>
+                      <td>20</td>
+                    </tr>
+                    <tr>
+                      <td>OxyCODONE</td>
+                      <td>Parenteral</td>
+                      <td>10</td>
+                    </tr>
+                    <tr>
+                      <td>OxyMORphone</td>
+                      <td>Parenteral</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>OxyMORphone</td>
+                      <td>Oral</td>
+                      <td>10</td>
+                    </tr>
+                    <tr>
+                      <td>TraMADol</td>
+                      <td>Oral</td>
+                      <td>120</td>
+                    </tr>
+                    <tr>
+                      <td>TraMADol</td>
+                      <td>Parenteral</td>
+                      <td>100</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <ul class="calculator__ref--container--list">
+                <li class="calculator__ref--container--index">
+                  <p class="calculator__ref--container--src">
+                    Source:
+                    <a
+                      href="https://www.mdcalc.com/calc/3947/opiate-conversion-calculator#evidence"
+                      >MdCalc&mdash;opiate&mdash;conversion</a
+                    >
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="calc-potassium" class="calculator__box hide-display">
+            <h2 class="calculator__header">Potassium Deficit</h2>
+            <h3 class="calculator__header--sub">In hypokalemic patients</h3>
+            <form action="#" id="calc-potassium-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label
+                  for="calc-potassium-weight"
+                  class="calculator__form--label"
+                  >Body Weight</label
+                >
+                <input
+                  type="number"
+                  id="calc-potassium-weight"
+                  class="calculator__form--input"
+                  placeholder="Weight (in kg)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="calc-potassium-potassium"
+                  class="calculator__form--label"
+                  >Measured Potassium</label
+                >
+                <input
+                  type="number"
+                  id="calc-potassium-potassium"
+                  class="calculator__form--input"
+                  placeholder="Potassium (in mmol/L)"
+                  required
+                />
+              </div>
+              <div class="calculator__form--submit">
+                <button
+                  class="calculator__form--btn"
+                  id="calc-potassium-submit"
+                >
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-potassium-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div id="calc-potassium--result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>Potassium Deficit:</span>
+                <span>5.63 mmol/L</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Potassium deficit is calculated to estimate the amount of
+                potassium that needs to be replaced in patients with
+                <strong>hypokalemia</strong>. This is critical for the following
+                reasons:
+                <br />
+                &mdash; Prevent complications of hypokalemia: Low potassium
+                levels can cause life-threatening arrhythmias, muscle weakness,
+                and other complications.
+                <br />
+                &mdash; Guide potassium replacement therapy: Helps clinicians
+                determine how much potassium to administer safely, either orally
+                or intravenously.
+                <br />
+                &mdash; Total body depletion: Serum potassium levels only
+                reflect a small portion of total body potassium, as most
+                potassium is intracellular.
+                <br />
+                <strong>NOTE: </strong> Careful monitoring is required during
+                potassium replacement, especially if the patient has impaired
+                kidney function or is on medications like ACE inhibitors or
+                potassium-sparing diuretics, which increase the risk of
+                hyperkalemia.
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <ul class="calculator__ref--container--list">
+                <li class="calculator__ref--container--index">
+                  Potassium Deficit (mmol/L) =
+                </li>
+                <li class="calculator__ref--container--index">
+                  (K<sub>Normal</sub> - K<sub>Measured</sub>) * BW * 0.4
+                </li>
+                <li class="calculator__ref--container--index">
+                  <p class="calculator__ref--container--src">
+                    Source: Medicine Hack
+                  </p>
+                </li>
+              </ul>
+              <div class="calculator__ref--container--row">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Summary Table
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Classification</th>
+                        <th>Patient's Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>Severe Hypokalemia (&lt;2.5 mmol/L)</th>
+                        <td>
+                          Life-threatening. Risk of arrhythmias, muscle
+                          paralysis, and respiratory compromise. Requires urgent
+                          correction.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Moderate Hypokalemia (2.5 - 3.0 mmol/l)</th>
+                        <td>
+                          Significant depletion. Symptoms like muscle weakness,
+                          fatigue, or ECG changes may appear. Needs prompt
+                          treatment.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Mild Hypokalemia (3.1 - 3.5 mmol/l)</th>
+                        <td>
+                          Borderline low. Usually asymptomatic but may worsen
+                          underlying conditions (e.g., arrhythmias in heart
+                          disease).
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Normal Range (3.6 - 5.0 mmol/l)</th>
+                        <td>
+                          Optimal potassium level for most patients. Indicates
+                          normal potassium homeostasis.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Mild Hyperkalemia (5.1 - 6.0 mmol/L)</th>
+                        <td>
+                          Often asymptomatic. Requires monitoring, especially in
+                          kidney impairment or drug-related causes.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Moderate Hyperkalemia (6.1 - 7.0 mmol/L)</th>
+                        <td>
+                          May cause ECG changes (e.g., peaked T waves), muscle
+                          weakness, and risk of arrhythmias. Requires urgent
+                          treatment.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Severe Hyperkalemia (&gt;7.0 mmol/L)</th>
+                        <td>
+                          Life-threatening. Immediate treatment is critical to
+                          prevent cardiac arrest.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div id="calc-ascvd" class="calculator__box">
+            <h2 class="calculator__header">ASCVD Risk Calculator</h2>
+            <h3 class="calculator__header--sub">From AHA/ACC</h3>
+            <form action="#" id="ascvd-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label for="ascvd-age" class="calculator__form--label"
+                  >Age / Date of Birth</label
+                >
+                <div class="calculator__form--row--col">
+                  <input
+                    type="number"
+                    class="calculator__form--input--col"
+                    id="ascvd-age"
+                    placeholder="Age (Yr)"
+                    required
+                  />
+                  <span>Or</span>
+                  <input
+                    type="date"
+                    class="calculator__form--input--col calculator__form--input--col--long"
+                    id="ascvd-dob"
+                  />
+                </div>
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-diabetes" class="calculator__form--label"
+                  >Diabetes</label
+                >
+                <select
+                  id="ascvd-diabetes"
+                  name="ascvd-diabetes"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-sex" class="calculator__form--label"
+                  >Sex</label
+                >
+                <select
+                  id="ascvd-sex"
+                  name="ascvd-sex"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-smoker" class="calculator__form--label"
+                  >Smoker</label
+                >
+                <select
+                  id="ascvd-smoker"
+                  name="ascvd-smoker"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="ascvd-total-cholesterol"
+                  class="calculator__form--label"
+                  >Total Cholesterol (mmol/L)</label
+                >
+                <input
+                  type="number"
+                  step="any"
+                  class="calculator__form--input"
+                  id="ascvd-total-cholesterol"
+                  placeholder="Norm: 3.9 - 5.2"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-hdl" class="calculator__form--label"
+                  >HDL Cholesterol (mmol/L)</label
+                >
+                <input
+                  type="number"
+                  step="any"
+                  class="calculator__form--input"
+                  id="ascvd-hdl"
+                  placeholder="Norm: 0 - 1.55"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-sbp" class="calculator__form--label"
+                  >Systolic Blood Pressure (mmHg)</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="ascvd-sbp"
+                  placeholder="Norm: 100 - 120"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-htn" class="calculator__form--label"
+                  >Treatment for Hypertension</label
+                >
+                <select
+                  id="ascvd-htn"
+                  name="ascvd-htn"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-race" class="calculator__form--label"
+                  >Race</label
+                >
+                <select
+                  id="ascvd-race"
+                  name="ascvd-race"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">White / Other</option>
+                  <option value="1">African American</option>
+                </select>
+              </div>
+              <div class="calculator__form--submit">
+                <button class="calculator__form--btn" id="calc-ascvd-submit">
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-ascvd-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div class="calculator__result" id="calc-ascvd-result">
+              <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>42.0%</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Risk of cardiovascular event (coronary or stroke death or
+                non-fatal MI or stroke) in next 10 years is
+                <span class="highlight">42.0%</span>
+                <br />
+                Moderate- to high-intensity statin recommended because 10-year
+                risk >7.5%
+              </p>
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Intensity of Statin Therapy
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table class="calculator__ref--container--table">
+                    <thead>
+                      <tr>
+                        <th>Statin</th>
+                        <th>Examples</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td rowspan="2">
+                          High - Intensity (Approx. &GreaterEqual; 50% LDL
+                          reduction)
+                        </td>
+                        <td>Atorvastatin 40-80 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Rosuvastatin 20-40 mg</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="8">
+                          Moderate - Intensity (Approx. 30% - 50% LDL reduction)
+                        </td>
+                        <td>Atorvastatin 10-20 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Rosuvastatin 5-10 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Simvastatin 20-40 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Pravastatin 40-80 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Lovastatin 40 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Fluvastatin XL 80 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Fluvastatin 40 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Pitavastatin 2-4 mg bid</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="5">
+                          Low - Intensity (Approx. &lt; 30% LDL reduction)
+                        </td>
+                        <td>Simvastatin 10 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Pravastatin 10-20 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Lovastatin 20 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Fluvastatin 20-40 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Pitavastatin 1 mg</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Scoring
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Total Score</th>
+                        <th>Class</th>
+                        <th>Prognosis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>5 - 6</td>
+                        <td>Child-Pugh A</td>
+                        <td>Well-compensated disease</td>
+                      </tr>
+                      <tr>
+                        <td>7 - 9</td>
+                        <td>Child-Pugh B</td>
+                        <td>Significant functional compromise</td>
+                      </tr>
+                      <tr>
+                        <td>10 - 15</td>
+                        <td>Child-Pugh C</td>
+                        <td>Decompensated disease (poor prognosis)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="https://www.mdcalc.com/calc/340/child-pugh-score-cirrhosis-mortality"
+                        target="_blank"
+                        >MdCalc.com</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+        </div>
       </div>
     </div>
     <div id="target" class="target">
@@ -118,7 +2778,7 @@
           <h3 class="target__box--header">Prescribing Restrictions</h3>
           <p class="target__box--txt">
             i. Patients unsuitable or failed other HAART treatmentii. Patients
-            who have renal impairment (CrCl < 50ml/min) when Abacavir and
+            who have renal impairment (CrCl &lt; 50ml/min) when Abacavir and
             Lamivudine fixed-dose combination is not recommended
           </p>
         </div>

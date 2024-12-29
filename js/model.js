@@ -1,3 +1,4 @@
+// FORMULARY
 export let allData;
 export const allDrugs = [];
 
@@ -25,4 +26,21 @@ export const getTargetDrugInfo = function (drug) {
 
   console.log(target);
   return target;
+};
+
+// CALCULATOR
+export const transferDataToCalcDict = function (ids, headers, subs) {
+  const calculatorDict = {
+    id: [],
+    header: [],
+    subHeader: [],
+  };
+
+  for (let i = 0; i < ids.length; i++) {
+    calculatorDict.id.push(ids[i]);
+    calculatorDict.header.push(headers[i]);
+    calculatorDict.subHeader.push(subs[i]);
+  }
+
+  return calculatorDict;
 };

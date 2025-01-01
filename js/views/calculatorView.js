@@ -327,7 +327,7 @@ class CalculatorView {
   }
 
   clearAnticoagulantConvForm() {
-    this._anticoagulantFrom.reset();
+    this._formAnticoagulant.reset();
     this._anticoagulantResult.innerHTML = "";
     this._calcAnticoagulantBox.scrollTo({ top: 0, behavior: "smooth" });
   }

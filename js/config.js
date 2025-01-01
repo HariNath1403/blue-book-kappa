@@ -112,8 +112,34 @@ export const clearPugh = function () {
   calculatorView.clearChildPugh();
 };
 
-/*
 export const calcAscvd = function () {
-  calculatorView.getAscvdRiskData();
+  calculatorView.getAscvdRisk();
 };
-*/
+
+export const clearAscvd = function () {
+  calculatorView.clearAscvdForm();
+};
+
+export const calcWarfarinAdjustedDose = function () {
+  calculatorView.getWarfarinDoseAdjustment();
+};
+
+export const clearWarfarinAdjustment = function () {
+  calculatorView.clearINRForm();
+};
+
+export const calcAnticoagulantConv = function () {
+  calculatorView.getAnticoagulantConvData();
+};
+
+export const clearAnticoagulantConv = function () {
+  calculatorView.clearAnticoagulantConvForm();
+};
+
+export const calcDenverRisk = function () {
+  calculatorView.getDenverRisk();
+};
+
+export const clearDenverRisk = function () {
+  calculatorView.clearDenverForm();
+};

@@ -57,14 +57,14 @@
     &--btn {
       width: 85%;
       padding: $space-mini;
-      background-color: $color-accent;
-      color: $color-shade;
+      background-color: $color-main;
+      color: $color-background;
       @include flex-box-col;
       gap: calc(#{$space-mini + $space-supersmall}/ 2);
 
       &:nth-child(even) {
-        background-color: $color-main;
-        color: $color-background;
+        background-color: $color-accent;
+        color: $color-shade;
       }
 
       &--header {
@@ -120,6 +120,14 @@
     &--label {
       font-weight: 600;
       margin-bottom: $space-mini;
+
+      &--footnote {
+        display: block;
+        font-size: $text-supersmall;
+        font-weight: 400;
+        margin-top: $space-supersmall;
+        color: $color-main;
+      }
     }
 
     &--radio {
@@ -183,6 +191,7 @@
 
       &::placeholder {
         color: $color-background;
+        color: rgba($color-background, 0.65);
       }
 
       &--col {
@@ -201,7 +210,7 @@
         }
 
         &::placeholder {
-          color: $color-background;
+          color: rgba($color-background, 0.65);
         }
       }
     }

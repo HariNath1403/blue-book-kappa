@@ -100,6 +100,14 @@ const initCalcFxs = function () {
   calculatorView.handlerClearGanzoniForm(config.clearGanzoni);
   calculatorView.handlerSubmitPughData(config.calcChildPughScore);
   calculatorView.handlerClearPughForm(config.clearPugh);
+  calculatorView.handlerSubmitAscvdData(config.calcAscvd);
+  calculatorView.handlerClearAscvdForm(config.clearAscvd);
+  calculatorView.handlerSubmitINRData(config.calcWarfarinAdjustedDose);
+  calculatorView.handlerClearINRForm(config.clearWarfarinAdjustment);
+  calculatorView.handlerSubmitAnticoagulantData(config.calcAnticoagulantConv);
+  calculatorView.handlerClearAnticoagulantForm(config.clearAnticoagulantConv);
+  calculatorView.handlerSubmitDenverData(config.calcDenverRisk);
+  calculatorView.handlerClearDenverForm(config.clearDenverRisk);
 };
 
 // INIT Fxs

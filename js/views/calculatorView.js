@@ -79,9 +79,10 @@ class CalculatorView {
       const curHeader = dict.header[i];
       const curSub = dict.subHeader[i];
 
-      const checkHeader = curHeader.trim().toLowerCase();
+      const checkHeader =
+        curHeader.trim().toLowerCase() + curSub.trim().toLowerCase();
 
-      if (checkHeader.includes(queryStr)) {
+      if (checkHeader.includes(queryStr.toLowerCase())) {
         filteredDict.id.push(curId);
         filteredDict.header.push(curHeader);
         filteredDict.subHeader.push(curSub);
@@ -222,9 +223,8 @@ class CalculatorView {
   _ibwForm = document.getElementById("calculator-IBW--form");
   _ibwResult = document.getElementById("calculator-IBW--result");
 
-  /*
   // ASCVD Risk
-  _calcBoxASCVD = document.getElementById("calc-ascvd");
+  _calcAscvdBox = document.getElementById("calc-ascvd");
   _ascvdForm = document.getElementById("ascvd-form");
   _ascvdAge = document.getElementById("ascvd-age");
   _ascvdDob = document.getElementById("ascvd-dob");
@@ -234,60 +234,205 @@ class CalculatorView {
   _ascvdTotalChol = document.getElementById("ascvd-total-cholesterol");
   _ascvdHdl = document.getElementById("ascvd-hdl");
   _ascvdSbp = document.getElementById("ascvd-sbp");
-  _ascvdTxHtn = document.getElementById("ascvd-htn");
+  _ascvdHtnTx = document.getElementById("ascvd-htn");
   _ascvdRace = document.getElementById("ascvd-race");
   _ascvdBtnSubmit = document.getElementById("calc-ascvd-submit");
   _ascvdBtnReset = document.getElementById("calc-ascvd-reset");
+  _ascvdResultBox = document.getElementById("calc-ascvd-result");
 
-  getASCVDAge() {
+  // Warfarin Dose Adjustment
+  _calcBoxInr = document.getElementById("calc-inr");
+  _calcInrForm = document.getElementById("calc-inr-form");
+  _inrWeeklyDose = document.getElementById("calc-inr-dose");
+  _inrInrReading = document.getElementById("calc-inr-inr");
+  _inrBtnSubmit = document.getElementById("calc-inr-submit");
+  _inrBtnReset = document.getElementById("calc-inr-reset");
+  _inrBoxResult = document.getElementById("calc-inr-result");
+
+  // Anticoagulant Conversion
+  _calcAnticoagulantBox = document.getElementById("calc-anticoagulant");
+  _formAnticoagulant = document.getElementById("anticoagulant-form");
+  _anticoagulantFrom = document.getElementById("anticoagulant-drug-from");
+  _anticoagulantTo = document.getElementById("anticoagulant-drug-to");
+  _anticoagulantBtnSubmit = document.getElementById(
+    "calc-anticoagulant-submit"
+  );
+  _anticoagulantBtnReset = document.getElementById("calc-anticoagulant-reset");
+  _anticoagulantResult = document.getElementById("anticoagulant-result");
+
+  // Denver's Risk
+  _calcDenverBox = document.getElementById("calc-denver");
+  _formDenver = document.getElementById("denver-form");
+  _denverAge = document.getElementById("denver-age");
+  _denverGender = document.getElementById("denver-gender");
+  _denverSexualPractice = document.getElementById("denver-sexual");
+  _denverOtherRisks = document.getElementById("denver-others");
+  _denverRace = document.getElementById("denver-race");
+  _denverBtnSubmit = document.getElementById("calc-denver-submit");
+  _denverBtnReset = document.getElementById("calc-denver-reset");
+  _denverResult = document.getElementById("calc-denver-result");
+
+  // Denver's Risk
+  getDenverRisk() {
+    const age = this._denverAge.value;
+    const gender = this._denverGender.value;
+    const sexualPractice = this._denverSexualPractice.value;
+    const otherRisks = this._denverOtherRisks.value;
+    const race = this._denverRace.value;
+
+    const data = new calc.DenverRisk(
+      age,
+      gender,
+      sexualPractice,
+      otherRisks,
+      race
+    );
+    console.log(data);
+
+    const markup = data.getMarkup();
+    this._denverResult.innerHTML = "";
+    this._denverResult.insertAdjacentHTML("beforeend", markup);
+  }
+
+  clearDenverForm() {
+    this._formDenver.reset();
+    this._denverResult.innerHTML = "";
+    this._calcDenverBox.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  handlerSubmitDenverData(handler) {
+    this._denverBtnSubmit.addEventListener("click", (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  handlerClearDenverForm(handler) {
+    this._denverBtnReset.addEventListener("click", (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+  // Anticoagulant Conversion
+  getAnticoagulantConvData() {
+    const fromDrug = this._anticoagulantFrom.value;
+    const toDrug = this._anticoagulantTo.value;
+
+    const data = new calc.AnticoagulantConv(fromDrug, toDrug);
+    console.log(data);
+
+    const markup = data.getMarkup();
+    this._anticoagulantResult.innerHTML = "";
+    this._anticoagulantResult.insertAdjacentHTML("beforeend", markup);
+  }
+
+  clearAnticoagulantConvForm() {
+    this._anticoagulantFrom.reset();
+    this._anticoagulantResult.innerHTML = "";
+    this._calcAnticoagulantBox.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  handlerSubmitAnticoagulantData(handler) {
+    this._anticoagulantBtnSubmit.addEventListener("click", (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  handlerClearAnticoagulantForm(handler) {
+    this._anticoagulantBtnReset.addEventListener("click", (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+  // Warfarin Dose Adjustment
+  getWarfarinDoseAdjustment() {
+    const weeklyDose = parseFloat(this._inrWeeklyDose.value);
+    const inrReading = parseFloat(this._inrInrReading.value);
+
+    if (!weeklyDose || !inrReading) {
+      alert("Please complete all the required fields");
+      return;
+    }
+
+    const data = new calc.warfarinDoseAdj(weeklyDose, inrReading);
+    console.log(data);
+
+    const markup = data.getMarkup();
+    this._inrBoxResult.innerHTML = "";
+    this._inrBoxResult.insertAdjacentHTML("beforeend", markup);
+  }
+
+  clearINRForm() {
+    this._calcInrForm.reset();
+    this._inrBoxResult.innerHTML = "";
+    this._calcBoxInr.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  handlerSubmitINRData(handler) {
+    this._inrBtnSubmit.addEventListener("click", (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  handlerClearINRForm(handler) {
+    this._inrBtnReset.addEventListener("click", (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  // ASCVD Risk
+  calcAscvdAge() {
+    let age;
     if (!this._ascvdAge.value && !this._ascvdDob.value) {
       alert("Please complete all the required fields");
       return;
     }
 
-    let calcAge;
-
-    if (this._ascvdAge.value) {
-      calcAge = +this._ascvdAge.value;
+    if (!this._ascvdAge.value) {
+      age = helper.calculateAge(this._ascvdDob.value);
     } else {
-      calcAge = helper.calculateAge(this._ascvdDob.value);
+      age = +this._ascvdAge.value;
     }
-    return calcAge;
+
+    return age;
   }
 
-  getAscvdRiskData() {
-    const age = this.getASCVDAge();
-    const diabetes = +this._ascvdDm.value;
-    const sex = this._ascvdSex.value;
+  getAscvdRisk() {
+    const age = this.calcAscvdAge();
+    const dmStatus = +this._ascvdDm.value;
+    const sex = +this._ascvdSex.value;
     const smoker = +this._ascvdSmoker.value;
     const totalChol = parseFloat(this._ascvdTotalChol.value);
     const hdlChol = parseFloat(this._ascvdHdl.value);
     const sbp = +this._ascvdSbp.value;
-    const treatmentForHtn = +this._ascvdTxHtn.value;
+    const txHypertension = +this._ascvdHtnTx.value;
     const race = +this._ascvdRace.value;
 
-    if (!age || !totalChol || !hdlChol || !sbp) {
-      alert("Please complete all the required fields");
-      return;
-    }
-
-    if (age <= 0 || totalChol < 0 || hdlChol < 0 || sbp < 0) {
-      alert("Inputs must be positive and greater than zero");
-      return;
-    }
-
-    const data = new calc.ASCVDRisk(
+    const ptData = new calc.ascvdRisk(
       age,
-      diabetes,
+      dmStatus,
       sex,
       smoker,
       totalChol,
       hdlChol,
       sbp,
-      treatmentForHtn,
+      txHypertension,
       race
     );
-    console.log(data);
+    console.log(ptData);
+
+    const markup = ptData.getMarkup();
+    this._ascvdResultBox.innerHTML = "";
+    this._ascvdResultBox.insertAdjacentHTML("beforeend", markup);
+  }
+
+  clearAscvdForm() {
+    this._ascvdForm.reset();
+    this._ascvdResultBox.innerHTML = "";
+    this._calcAscvdBox.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   handlerSubmitAscvdData(handler) {
@@ -303,7 +448,6 @@ class CalculatorView {
       handler();
     });
   }
-*/
 
   // Child-Pugh
   getChildPughScore() {

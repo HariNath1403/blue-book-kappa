@@ -114,6 +114,261 @@
               </li> -->
             </ul>
           </div>
+
+          <div id="calc-ascvd" class="calculator__box hide-display">
+            <h2 class="calculator__header">ASCVD Risk Calculator</h2>
+            <h3 class="calculator__header--sub">
+              From AHA/ACC (2013 Risk Calculator)
+            </h3>
+            <form action="#" id="ascvd-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label for="ascvd-age" class="calculator__form--label"
+                  >Age / Date of Birth</label
+                >
+                <div class="calculator__form--row--col">
+                  <input
+                    type="number"
+                    class="calculator__form--input--col"
+                    id="ascvd-age"
+                    placeholder="Age (Yr)"
+                    required
+                  />
+                  <span>Or</span>
+                  <input
+                    type="date"
+                    class="calculator__form--input--col calculator__form--input--col--long"
+                    id="ascvd-dob"
+                  />
+                </div>
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-diabetes" class="calculator__form--label"
+                  >Diabetes</label
+                >
+                <select
+                  id="ascvd-diabetes"
+                  name="ascvd-diabetes"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-sex" class="calculator__form--label"
+                  >Sex</label
+                >
+                <select
+                  id="ascvd-sex"
+                  name="ascvd-sex"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="1">Male</option>
+                  <option value="0">Female</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-smoker" class="calculator__form--label"
+                  >Smoker</label
+                >
+                <select
+                  id="ascvd-smoker"
+                  name="ascvd-smoker"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="ascvd-total-cholesterol"
+                  class="calculator__form--label"
+                  >Total Cholesterol (mmol/L)</label
+                >
+                <input
+                  type="number"
+                  step="any"
+                  class="calculator__form--input"
+                  id="ascvd-total-cholesterol"
+                  placeholder="Norm: 3.9 - 5.2"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-hdl" class="calculator__form--label"
+                  >HDL Cholesterol (mmol/L)</label
+                >
+                <input
+                  type="number"
+                  step="any"
+                  class="calculator__form--input"
+                  id="ascvd-hdl"
+                  placeholder="Norm: 0 - 1.55"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-sbp" class="calculator__form--label"
+                  >Systolic Blood Pressure (mmHg)</label
+                >
+                <input
+                  type="number"
+                  class="calculator__form--input"
+                  id="ascvd-sbp"
+                  placeholder="Norm: 100 - 120"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-htn" class="calculator__form--label"
+                  >Treatment for Hypertension</label
+                >
+                <select
+                  id="ascvd-htn"
+                  name="ascvd-htn"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="ascvd-race" class="calculator__form--label"
+                  >Race</label
+                >
+                <select
+                  id="ascvd-race"
+                  name="ascvd-race"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">White / Other</option>
+                  <option value="1">African American</option>
+                </select>
+              </div>
+              <div class="calculator__form--submit">
+                <button class="calculator__form--btn" id="calc-ascvd-submit">
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-ascvd-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div class="calculator__result" id="calc-ascvd-result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>42.0%</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Risk of cardiovascular event (coronary or stroke death or
+                non-fatal MI or stroke) in next 10 years is
+                <span class="highlight">42.0%</span>
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Intensity of Statin Therapy
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table class="calculator__ref--container--table">
+                    <thead>
+                      <tr>
+                        <th>Statin</th>
+                        <th>Examples</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td rowspan="2">
+                          High - Intensity (Approx. &GreaterEqual; 50% LDL
+                          reduction)
+                        </td>
+                        <td>Atorvastatin 40-80 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Rosuvastatin 20-40 mg</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="8">
+                          Moderate - Intensity (Approx. 30% - 50% LDL reduction)
+                        </td>
+                        <td>Atorvastatin 10-20 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Rosuvastatin 5-10 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Simvastatin 20-40 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Pravastatin 40-80 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Lovastatin 40 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Fluvastatin XL 80 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Fluvastatin 40 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Pitavastatin 2-4 mg bid</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="5">
+                          Low - Intensity (Approx. &lt; 30% LDL reduction)
+                        </td>
+                        <td>Simvastatin 10 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Pravastatin 10-20 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Lovastatin 20 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Fluvastatin 20-40 mg</td>
+                      </tr>
+                      <tr>
+                        <td>Pitavastatin 1 mg</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="https://www.ahajournals.org/doi/pdf/10.1161/01.cir.0000437741.48606.98"
+                        target="_blank"
+                        >2013 ACC/AHA Guideline on the Assessment of
+                        Cardiovascular Risk</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div id="calculator-IBW" class="calculator__box hide-display">
             <h2 class="calculator__header">Body Weight Adjustment</h2>
             <h3 class="calculator__header--sub">IBW, ABW or BMI</h3>
@@ -315,7 +570,7 @@
               </div>
             </div>
           </div>
-          <div id="calc-pugh" class="calculator__box">
+          <div id="calc-pugh" class="calculator__box hide-display">
             <h2 class="calculator__header">Child-Pugh Score</h2>
             <h3 class="calculator__header--sub">For Cirrhosis Mortality</h3>
             <form action="#" id="calc-pugh-form" class="calculator__form">
@@ -595,11 +850,497 @@
                       <a
                         href="https://www.mdcalc.com/calc/340/child-pugh-score-cirrhosis-mortality"
                         target="_blank"
-                        >MdCalc.com</a
+                        >MdCalc.com&mdash;Child&mdash;Pugh</a
                       >
                     </p>
                   </li>
                 </ul>
+              </div>
+            </div>
+          </div>
+          <div id="calc-anticoagulant" class="calculator__box hide-display">
+            <h2 class="calculator__header">
+              Conversion between Anticoagulants
+            </h2>
+            <h3 class="calculator__header--sub">
+              Guide from Anticogulant MTAC Protocol 2020
+            </h3>
+            <form action="#" id="anticoagulant-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label
+                  for="anticoagulant-drug-from"
+                  class="calculator__form--label"
+                  >FROM
+                </label>
+                <select
+                  id="anticoagulant-drug-from"
+                  name="anticoagulant-drug-from"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="Warfarin">Warfarin</option>
+                  <option value="LMWH">Low-Molecular Weight Heparin</option>
+                  <option value="UFH">Unfractionated Heparin</option>
+                  <option value="Dabigatran">Dabigatran</option>
+                  <option value="Rivaroxaban">Rivaroxaban</option>
+                  <option value="Apixaban">Apixaban</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="anticoagulant-drug-to"
+                  class="calculator__form--label"
+                  >TO</label
+                >
+                <select
+                  id="anticoagulant-drug-to"
+                  name="anticoagulant-drug-to"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="Warfarin">Warfarin</option>
+                  <option value="LMWH">Low-Molecular Weight Heparin</option>
+                  <option value="UFH">Unfractionated Heparin</option>
+                  <option value="Dabigatran">Dabigatran</option>
+                  <option value="Rivaroxaban">Rivaroxaban</option>
+                  <option value="Apixaban">Apixaban</option>
+                </select>
+              </div>
+              <div class="calculator__form--submit">
+                <button
+                  class="calculator__form--btn"
+                  id="calc-anticoagulant-submit"
+                >
+                  <span class="calculator__form--btn--txt">Check</span>
+                  <ion-icon
+                    name="arrow-redo"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-anticoagulant-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div id="anticoagulant-result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <br />
+                <span>From LMWH</span>
+                <span>To Dabigatran</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Start Dabigatran 0 to 2 hours prior to the time of the next dose
+                of LMWH.
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Available Reversal Agents
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Agent</th>
+                        <th>Dabigatran</th>
+                        <th>Rivaroxaban / Apixaban</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>First Line</td>
+                        <td>Idarucizumab</td>
+                        <td>Prothrombin Complex Concentrate</td>
+                      </tr>
+                      <tr>
+                        <td>Second Line</td>
+                        <td>
+                          Prothrombin Complex Concentrate / Activated
+                          Prothrombin Complex Concentrate
+                        </td>
+                        <td>Activated Prothrombin Complex Concentrate</td>
+                      </tr>
+                      <tr>
+                        <td>Not Indicated</td>
+                        <td>Plasma</td>
+                        <td>Idarucizumab & Plasma</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="guidelines/Chronic/MTAC Anticoagulant 2020.pdf"
+                        target="_blank"
+                        >MTAC Anticoagulant Jan 2020 (M'sia)</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="calculator-calcium" class="calculator__box hide-display">
+            <h2 class="calculator__header">Corrected Calcium</h2>
+            <h3 class="calculator__header--sub">For Hypoalbuminaemia</h3>
+            <form
+              action="#"
+              id="calculator-calcium--form"
+              class="calculator__form"
+            >
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-calcium--calcium"
+                  class="calculator__form--label"
+                  >Measured Calcium (in mmol/L)</label
+                >
+                <input
+                  type="number"
+                  id="calculator-calcium--calcium"
+                  class="calculator__form--input"
+                  placeholder="Serum Calcium"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label
+                  for="calculator-calcium--albumin"
+                  class="calculator__form--label"
+                  >Measured Albumin (in g/L)</label
+                >
+                <input
+                  type="number"
+                  id="calculator-calcium--albumin"
+                  class="calculator__form--input"
+                  placeholder="Serum Albumin"
+                  required
+                />
+              </div>
+              <div class="calculator__form--submit">
+                <button
+                  class="calculator__form--btn"
+                  id="calculator-calcium--submit"
+                >
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calculator-calcium--reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div id="calculator-calcium--result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>Corrected calcium level:</span>
+                <span>2.20 mmol/L</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Albumin is a protein in the blood that binds calcium, meaning
+                that a significant portion of the total calcium is carried
+                around by albumin. If albumin levels are low (hypoalbuminemia),
+                the total calcium level might be low even though the level of
+                free, biologically active calcium is normal.
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <div class="calculator__ref--container">
+                <h3 class="calculator__ref--container--header">
+                  Corrected Calcium
+                </h3>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    Corrected calcium (mmol/L) =
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    Serum calcium (mmol/L) + 0.02 * [40 - Serum albumin (g/L)]
+                  </li>
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="https://www.thecalculator.co/health/Calcium-Correction-Calculator-616.html"
+                        target="_blank"
+                        >www.thecalculator.co</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Summary Table
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table class="calculator__ref--container--table">
+                    <thead>
+                      <tr>
+                        <th>Hypercalcaemia</th>
+                        <th>Serum Calcium (mmol/L)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Normal</td>
+                        <td>2.1 - 2.6</td>
+                      </tr>
+                      <tr>
+                        <td>Mild</td>
+                        <td>2.6 - 3.0</td>
+                      </tr>
+                      <tr>
+                        <td>Moderate</td>
+                        <td>3.0 - 3.5</td>
+                      </tr>
+                      <tr>
+                        <td>Severe</td>
+                        <td>3.5 - 4.0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="calc-sodium" class="calculator__box hide-display">
+            <h2 class="calculator__header">Corrected Sodium</h2>
+            <h3 class="calculator__header--sub">For Hyperglycaemia</h3>
+            <form action="#" id="calc-sodium-form" class="calculator__form">
+              <div class="calculator__form--row">
+                <label for="calc-sodium-sodium" class="calculator__form--label"
+                  >Sodium Level (in mmol/L)</label
+                >
+                <input
+                  type="number"
+                  id="calc-sodium-sodium"
+                  class="calculator__form--input"
+                  placeholder="Sodium Level"
+                  required
+                />
+              </div>
+              <div class="calculator__form--row">
+                <label for="calc-sodium-glucose" class="calculator__form--label"
+                  >Glucose Level (mmol/L)</label
+                >
+                <input
+                  type="number"
+                  id="calc-sodium-glucose"
+                  class="calculator__form--input"
+                  placeholder="Glucose Level"
+                  required
+                />
+              </div>
+              <div class="calculator__form--submit">
+                <button class="calculator__form--btn" id="calc-sodium-submit">
+                  <span class="calculator__form--btn--txt">Calculate</span>
+                  <ion-icon
+                    name="calculator"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+                <button
+                  class="calculator__form--btn calculator__form--btn--reset"
+                  id="calc-sodium-reset"
+                >
+                  <span class="calculator__form--btn--txt">Clear</span>
+                  <ion-icon
+                    name="trash-bin"
+                    class="calculator__form--btn--icon"
+                  ></ion-icon>
+                </button>
+              </div>
+            </form>
+            <div id="calc-sodium--result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>Corrected sodium level:</span>
+                <span>134.18 mmol/L</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Corrected sodium is calculated in patients with hyperglycemia
+                because elevated blood glucose levels cause translocation of
+                water from the intracellular to the extracellular space. This
+                dilution effect can falsely lower the sodium concentration
+                measured in the blood. <br />
+                <strong>Key reasons</strong> for calculating corrected sodium:
+                <br />
+                &mdash; Assess true sodium status: It helps in determining the
+                actual sodium level to guide appropriate treatment.
+                <br />
+                &mdash; Avoid overcorrection: Misinterpreting hyponatremia (low
+                sodium) may lead to overtreatment, which can be dangerous.
+                <br />
+                &mdash; Guide fluid therapy: Knowing the corrected sodium helps
+                tailor fluid management in hyperglycemic crises like diabetic
+                ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS).
+              </p> -->
+            </div>
+            <div class="calculator__ref">
+              <h3 class="calculator__ref--header">References</h3>
+              <ul class="calculator__ref--container--list">
+                <li class="calculator__ref--container--index">
+                  Corrected sodium (mmol/L) =
+                </li>
+                <li class="calculator__ref--container--index">
+                  Sodium + [0.288 * (Glucose - 5.5)]
+                </li>
+                <li class="calculator__ref--container--index">
+                  <p class="calculator__ref--container--src">
+                    Source: Sarawak Handbook of Medical Emergencies 3rd Edition
+                  </p>
+                </li>
+              </ul>
+              <div class="calculator__ref--container--row">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Correlation Table
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Glucose Level (mmol/L)</th>
+                        <th>Effect on Sodium</th>
+                        <th>Corrected Sodium Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>5.5 (Normal)</th>
+                        <td>No correction needed</td>
+                        <td>Sodium reflects true status.</td>
+                      </tr>
+                      <tr>
+                        <th>6 - 10</th>
+                        <td>Slight decrease</td>
+                        <td>
+                          Corrected sodium remains close to measured sodium,
+                          usually no clinical significance.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>10 - 20</th>
+                        <td>Moderate decrease</td>
+                        <td>
+                          Corrected sodium is higher than measured sodium. Check
+                          for mild dilutional hyponatremia.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>&gt; 20</th>
+                        <td>Significant decrease</td>
+                        <td>
+                          Marked dilutional effect on sodium. Corrected sodium
+                          must be calculated to guide therapy.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="calculator__ref--container--row">
+                <h3 class="calculator__ref--container--header small-margin-top">
+                  Summary Table
+                </h3>
+                <div class="calculator__ref--container--row">
+                  <table
+                    class="calculator__ref--container--table calculator__ref--container--table--small"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Sodium Level (mmol/L)</th>
+                        <th>Classification</th>
+                        <th>Patient's Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>&lt; 120</th>
+                        <td>Severe Hyponatremia</td>
+                        <td>
+                          Life-threatening. Risk of seizures, coma, and brain
+                          herniation. Requires urgent treatment.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>120 - 129</th>
+                        <td>Moderate Hyponatremia</td>
+                        <td>
+                          Significant sodium deficit. Symptoms like confusion,
+                          nausea, and muscle cramps may occur.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>130 - 135</th>
+                        <td>Mild Hyponatremia</td>
+                        <td>
+                          Borderline low. Often asymptomatic but may worsen in
+                          conditions like heart failure or cirrhosis.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>135 - 145</th>
+                        <td>Normal Range</td>
+                        <td>Normal sodium homeostasis.</td>
+                      </tr>
+                      <tr>
+                        <th>146 - 150</th>
+                        <td>Mild Hypernatremia</td>
+                        <td>
+                          May cause mild symptoms like thirst or lethargy.
+                          Requires monitoring and correction of underlying
+                          causes.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>151 - 160</th>
+                        <td>Moderate Hypernatremia</td>
+                        <td>
+                          Risk of neurologic symptoms, including confusion and
+                          muscle twitching. Needs prompt intervention.
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>&gt; 160</th>
+                        <td>Severe Hypernatremia</td>
+                        <td>
+                          Life-threatening. Risk of brain shrinkage, seizures,
+                          and coma. Requires urgent treatment.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -1002,47 +1743,92 @@
               </div>
             </div>
           </div>
-          <div id="calculator-calcium" class="calculator__box hide-display">
-            <h2 class="calculator__header">Corrected Calcium</h2>
-            <h3 class="calculator__header--sub">For Hypoalbuminaemia</h3>
-            <form
-              action="#"
-              id="calculator-calcium--form"
-              class="calculator__form"
-            >
+          <div id="calc-denver" class="calculator__box hide-display">
+            <h2 class="calculator__header">Denver's HIV Risk</h2>
+            <h3 class="calculator__header--sub">
+              Predicts probability of undiagnosed HIV infection.
+            </h3>
+            <form action="#" id="denver-form" class="calculator__form">
               <div class="calculator__form--row">
-                <label
-                  for="calculator-calcium--calcium"
-                  class="calculator__form--label"
-                  >Measured Calcium (in mmol/L)</label
+                <label for="denver-age" class="calculator__form--label"
+                  >Diabetes</label
                 >
-                <input
-                  type="number"
-                  id="calculator-calcium--calcium"
-                  class="calculator__form--input"
-                  placeholder="Serum Calcium"
-                  required
-                />
+                <select
+                  id="denver-age"
+                  name="denver-age"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">&lt; 22 (+0)</option>
+                  <option value="4">22 - 25 (+4)</option>
+                  <option value="10">26 - 32 (+10)</option>
+                  <option value="12">33 - 46 (+12)</option>
+                  <option value="10">47 - 54 (+10)</option>
+                  <option value="4">55 - 60 (+4)</option>
+                  <option value="0">&gt; 60 (+0)</option>
+                </select>
               </div>
               <div class="calculator__form--row">
-                <label
-                  for="calculator-calcium--albumin"
-                  class="calculator__form--label"
-                  >Measured Albumin (in g/L)</label
+                <label for="denver-gender" class="calculator__form--label"
+                  >Diabetes</label
                 >
-                <input
-                  type="number"
-                  id="calculator-calcium--albumin"
-                  class="calculator__form--input"
-                  placeholder="Serum Albumin"
-                  required
-                />
+                <select
+                  id="denver-gender"
+                  name="denver-gender"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="0">Female (+0)</option>
+                  <option value="21">Male (+21)</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="denver-sexual" class="calculator__form--label"
+                  ><span>Sexual practices</span>
+                  <span class="calculator__form--label--footnote"
+                    >Choose the practice that yields the highest score (among
+                    those that apply)</span
+                  ></label
+                >
+                <select
+                  id="denver-sexual"
+                  name="denver-sexual"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="22">MSM (+22)</option>
+                  <option value="8">Receptive anal intercourse (+8)</option>
+                  <option value="-10">Vaginal intercourse (-10)</option>
+                  <option value="0">None of the above</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="denver-others" class="calculator__form--label"
+                  >Other risk factors</label
+                >
+                <select
+                  id="denver-others"
+                  name="denver-others"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="9">Intravenous Drug Use (+9)</option>
+                  <option value="-4">Past HIV Testing (-4)</option>
+                  <option value="0">Neither (+0)</option>
+                </select>
+              </div>
+              <div class="calculator__form--row">
+                <label for="denver-race" class="calculator__form--label"
+                  >Race / Ethinicity</label
+                >
+                <select
+                  id="denver-race"
+                  name="denver-race"
+                  class="calculator__form--dropdown"
+                >
+                  <option value="9">African American (+9)</option>
+                  <option value="3">Hispanic (+3)</option>
+                  <option value="0">White / Others (+0)</option>
+                </select>
               </div>
               <div class="calculator__form--submit">
-                <button
-                  class="calculator__form--btn"
-                  id="calculator-calcium--submit"
-                >
+                <button class="calculator__form--btn" id="calc-denver-submit">
                   <span class="calculator__form--btn--txt">Calculate</span>
                   <ion-icon
                     name="calculator"
@@ -1051,7 +1837,7 @@
                 </button>
                 <button
                   class="calculator__form--btn calculator__form--btn--reset"
-                  id="calculator-calcium--reset"
+                  id="calc-denver-reset"
                 >
                   <span class="calculator__form--btn--txt">Clear</span>
                   <ion-icon
@@ -1061,293 +1847,80 @@
                 </button>
               </div>
             </form>
-            <div id="calculator-calcium--result" class="calculator__result">
+            <div class="calculator__result" id="calc-denver-result">
               <!-- <h3 class="calculator__result--header">Result</h3>
               <div
                 class="calculator__result--jombotron calculator__result--jombotron--small"
               >
-                <span>Corrected calcium level:</span>
-                <span>2.20 mmol/L</span>
+                <span>56 points</span>
+                <span>Very High Risk</span>
               </div>
               <p class="calculator__result--explaination">
-                Albumin is a protein in the blood that binds calcium, meaning
-                that a significant portion of the total calcium is carried
-                around by albumin. If albumin levels are low (hypoalbuminemia),
-                the total calcium level might be low even though the level of
-                free, biologically active calcium is normal.
+                Client has a Denver score of
+                <span class="highlight">56</span> points. Hence, his / her risk
+                of being diagnosed with HIV is
+                <span class="highlight">Very High</span>. <br />
+                He/ She has a HIV prevalence of
+                <span class="highlight">3.59%</span>.
               </p> -->
             </div>
             <div class="calculator__ref">
               <h3 class="calculator__ref--header">References</h3>
               <div class="calculator__ref--container">
-                <h3 class="calculator__ref--container--header">
-                  Corrected Calcium
-                </h3>
-                <ul class="calculator__ref--container--list">
-                  <li class="calculator__ref--container--index">
-                    Corrected calcium (mmol/L) =
-                  </li>
-                  <li class="calculator__ref--container--index">
-                    Serum calcium (mmol/L) + 0.02 * [40 - Serum albumin (g/L)]
-                  </li>
-                  <li class="calculator__ref--container--index">
-                    <p class="calculator__ref--container--src">
-                      Source:
-                      <a
-                        href="https://www.thecalculator.co/health/Calcium-Correction-Calculator-616.html"
-                        target="_blank"
-                        >www.thecalculator.co</a
-                      >
-                    </p>
-                  </li>
-                </ul>
-
                 <h3 class="calculator__ref--container--header small-margin-top">
-                  Summary Table
+                  HIV Prevalence
                 </h3>
                 <div class="calculator__ref--container--row">
                   <table class="calculator__ref--container--table">
                     <thead>
                       <tr>
-                        <th>Hypercalcaemia</th>
-                        <th>Serum Calcium (mmol/L)</th>
+                        <th>Score</th>
+                        <th>Risk</th>
+                        <th>HIV Prevalence (95% CI)</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Normal</td>
-                        <td>2.1 - 2.6</td>
+                        <td>&lt;20</td>
+                        <td>Very low</td>
+                        <td>0.31% (0.20-0.45)</td>
                       </tr>
                       <tr>
-                        <td>Mild</td>
-                        <td>2.6 - 3.0</td>
+                        <td>20-29</td>
+                        <td>Low</td>
+                        <td>0.41% (0.29-0.57)</td>
                       </tr>
                       <tr>
+                        <td>30-39</td>
                         <td>Moderate</td>
-                        <td>3.0 - 3.5</td>
+                        <td>0.99% (0.63-1.47)</td>
                       </tr>
                       <tr>
-                        <td>Severe</td>
-                        <td>3.5 - 4.0</td>
+                        <td>40-49</td>
+                        <td>High</td>
+                        <td>1.59% (1.02-2.36)</td>
+                      </tr>
+                      <tr>
+                        <td>&GreaterEqual;50</td>
+                        <td>Very high</td>
+                        <td>3.59% (2.73-4.63)</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div id="calc-sodium" class="calculator__box hide-display">
-            <h2 class="calculator__header">Corrected Sodium</h2>
-            <h3 class="calculator__header--sub">For Hyperglycaemia</h3>
-            <form action="#" id="calc-sodium-form" class="calculator__form">
-              <div class="calculator__form--row">
-                <label for="calc-sodium-sodium" class="calculator__form--label"
-                  >Sodium Level (in mmol/L)</label
-                >
-                <input
-                  type="number"
-                  id="calc-sodium-sodium"
-                  class="calculator__form--input"
-                  placeholder="Sodium Level"
-                  required
-                />
-              </div>
-              <div class="calculator__form--row">
-                <label for="calc-sodium-glucose" class="calculator__form--label"
-                  >Glucose Level (mmol/L)</label
-                >
-                <input
-                  type="number"
-                  id="calc-sodium-glucose"
-                  class="calculator__form--input"
-                  placeholder="Glucose Level"
-                  required
-                />
-              </div>
-              <div class="calculator__form--submit">
-                <button class="calculator__form--btn" id="calc-sodium-submit">
-                  <span class="calculator__form--btn--txt">Calculate</span>
-                  <ion-icon
-                    name="calculator"
-                    class="calculator__form--btn--icon"
-                  ></ion-icon>
-                </button>
-                <button
-                  class="calculator__form--btn calculator__form--btn--reset"
-                  id="calc-sodium-reset"
-                >
-                  <span class="calculator__form--btn--txt">Clear</span>
-                  <ion-icon
-                    name="trash-bin"
-                    class="calculator__form--btn--icon"
-                  ></ion-icon>
-                </button>
-              </div>
-            </form>
-            <div id="calc-sodium--result" class="calculator__result">
-              <!-- <h3 class="calculator__result--header">Result</h3>
-              <div
-                class="calculator__result--jombotron calculator__result--jombotron--small"
-              >
-                <span>Corrected sodium level:</span>
-                <span>134.18 mmol/L</span>
-              </div>
-              <p class="calculator__result--explaination">
-                Corrected sodium is calculated in patients with hyperglycemia
-                because elevated blood glucose levels cause translocation of
-                water from the intracellular to the extracellular space. This
-                dilution effect can falsely lower the sodium concentration
-                measured in the blood. <br />
-                <strong>Key reasons</strong> for calculating corrected sodium:
-                <br />
-                &mdash; Assess true sodium status: It helps in determining the
-                actual sodium level to guide appropriate treatment.
-                <br />
-                &mdash; Avoid overcorrection: Misinterpreting hyponatremia (low
-                sodium) may lead to overtreatment, which can be dangerous.
-                <br />
-                &mdash; Guide fluid therapy: Knowing the corrected sodium helps
-                tailor fluid management in hyperglycemic crises like diabetic
-                ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS).
-              </p> -->
-            </div>
-            <div class="calculator__ref">
-              <h3 class="calculator__ref--header">References</h3>
-              <ul class="calculator__ref--container--list">
-                <li class="calculator__ref--container--index">
-                  Corrected sodium (mmol/L) =
-                </li>
-                <li class="calculator__ref--container--index">
-                  Sodium + [0.288 * (Glucose - 5.5)]
-                </li>
-                <li class="calculator__ref--container--index">
-                  <p class="calculator__ref--container--src">
-                    Source: Sarawak Handbook of Medical Emergencies 3rd Edition
-                  </p>
-                </li>
-              </ul>
-              <div class="calculator__ref--container--row">
-                <h3 class="calculator__ref--container--header small-margin-top">
-                  Correlation Table
-                </h3>
-                <div class="calculator__ref--container--row">
-                  <table
-                    class="calculator__ref--container--table calculator__ref--container--table--small"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Glucose Level (mmol/L)</th>
-                        <th>Effect on Sodium</th>
-                        <th>Corrected Sodium Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>5.5 (Normal)</th>
-                        <td>No correction needed</td>
-                        <td>Sodium reflects true status.</td>
-                      </tr>
-                      <tr>
-                        <th>6 - 10</th>
-                        <td>Slight decrease</td>
-                        <td>
-                          Corrected sodium remains close to measured sodium,
-                          usually no clinical significance.
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>10 - 20</th>
-                        <td>Moderate decrease</td>
-                        <td>
-                          Corrected sodium is higher than measured sodium. Check
-                          for mild dilutional hyponatremia.
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>&gt; 20</th>
-                        <td>Significant decrease</td>
-                        <td>
-                          Marked dilutional effect on sodium. Corrected sodium
-                          must be calculated to guide therapy.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="calculator__ref--container--row">
-                <h3 class="calculator__ref--container--header small-margin-top">
-                  Summary Table
-                </h3>
-                <div class="calculator__ref--container--row">
-                  <table
-                    class="calculator__ref--container--table calculator__ref--container--table--small"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Sodium Level (mmol/L)</th>
-                        <th>Classification</th>
-                        <th>Patient's Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>&lt; 120</th>
-                        <td>Severe Hyponatremia</td>
-                        <td>
-                          Life-threatening. Risk of seizures, coma, and brain
-                          herniation. Requires urgent treatment.
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>120 - 129</th>
-                        <td>Moderate Hyponatremia</td>
-                        <td>
-                          Significant sodium deficit. Symptoms like confusion,
-                          nausea, and muscle cramps may occur.
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>130 - 135</th>
-                        <td>Mild Hyponatremia</td>
-                        <td>
-                          Borderline low. Often asymptomatic but may worsen in
-                          conditions like heart failure or cirrhosis.
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>135 - 145</th>
-                        <td>Normal Range</td>
-                        <td>Normal sodium homeostasis.</td>
-                      </tr>
-                      <tr>
-                        <th>146 - 150</th>
-                        <td>Mild Hypernatremia</td>
-                        <td>
-                          May cause mild symptoms like thirst or lethargy.
-                          Requires monitoring and correction of underlying
-                          causes.
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>151 - 160</th>
-                        <td>Moderate Hypernatremia</td>
-                        <td>
-                          Risk of neurologic symptoms, including confusion and
-                          muscle twitching. Needs prompt intervention.
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>&gt; 160</th>
-                        <td>Severe Hypernatremia</td>
-                        <td>
-                          Life-threatening. Risk of brain shrinkage, seizures,
-                          and coma. Requires urgent treatment.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="https://www.mdcalc.com/calc/10046/denver-hiv-risk-score#evidence"
+                        target="_blank"
+                        >mdCalc&mdash;Denver&mdash;score</a
+                      >
+                    </p>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -1495,6 +2068,18 @@
                   <li class="calculator__ref--container--index">
                     W * (Hb <sub>Target</sub> - Hb <sub>Actual</sub>) * 2.4 +
                     (15 * W)
+                  </li>
+                </ul>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="https://www.mdcalc.com/calc/10139/ganzoni-equation-iron-deficiency-anemia"
+                        target="_blank"
+                        >MdCalc.com&mdash;Ganzoni&mdash;Equation</a
+                      >
+                    </p>
                   </li>
                 </ul>
                 <h3 class="calculator__ref--container--header small-margin-top">
@@ -1807,10 +2392,21 @@
                     </tbody>
                   </table>
                 </div>
+                <ul class="calculator__ref--container--list">
+                  <li class="calculator__ref--container--index">
+                    <p class="calculator__ref--container--src">
+                      Source:
+                      <a
+                        href="https://hctm.ukm.my/farmasi/wp-content/uploads/2020/09/9.2016.-parenteral-iron-therapy-for-ida-in-pregnancy.pdf"
+                        target="_blank"
+                        >PPUKM 2016 Pharmacy Bulletin (Vol 16, Issue 9)
+                      </a>
+                    </p>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-
           <div id="calc-map" class="calculator__box hide-display">
             <h2 class="calculator__header">Mean Arterial Pressure</h2>
             <h3 class="calculator__header--sub">
@@ -2453,138 +3049,36 @@
               </div>
             </div>
           </div>
-
-          <!-- <div id="calc-ascvd" class="calculator__box">
-            <h2 class="calculator__header">ASCVD Risk Calculator</h2>
-            <h3 class="calculator__header--sub">From AHA/ACC</h3>
-            <form action="#" id="ascvd-form" class="calculator__form">
+          <div id="calc-inr" class="calculator__box hide-display">
+            <h2 class="calculator__header">Warfarin Dose Adjustment</h2>
+            <h3 class="calculator__header--sub">For an INR Target: 2 - 3</h3>
+            <form action="#" id="calc-inr-form" class="calculator__form">
               <div class="calculator__form--row">
-                <label for="ascvd-age" class="calculator__form--label"
-                  >Age / Date of Birth</label
-                >
-                <div class="calculator__form--row--col">
-                  <input
-                    type="number"
-                    class="calculator__form--input--col"
-                    id="ascvd-age"
-                    placeholder="Age (Yr)"
-                    required
-                  />
-                  <span>Or</span>
-                  <input
-                    type="date"
-                    class="calculator__form--input--col calculator__form--input--col--long"
-                    id="ascvd-dob"
-                  />
-                </div>
-              </div>
-              <div class="calculator__form--row">
-                <label for="ascvd-diabetes" class="calculator__form--label"
-                  >Diabetes</label
-                >
-                <select
-                  id="ascvd-diabetes"
-                  name="ascvd-diabetes"
-                  class="calculator__form--dropdown"
-                >
-                  <option value="0">No</option>
-                  <option value="1">Yes</option>
-                </select>
-              </div>
-              <div class="calculator__form--row">
-                <label for="ascvd-sex" class="calculator__form--label"
-                  >Sex</label
-                >
-                <select
-                  id="ascvd-sex"
-                  name="ascvd-sex"
-                  class="calculator__form--dropdown"
-                >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-              <div class="calculator__form--row">
-                <label for="ascvd-smoker" class="calculator__form--label"
-                  >Smoker</label
-                >
-                <select
-                  id="ascvd-smoker"
-                  name="ascvd-smoker"
-                  class="calculator__form--dropdown"
-                >
-                  <option value="0">No</option>
-                  <option value="1">Yes</option>
-                </select>
-              </div>
-              <div class="calculator__form--row">
-                <label
-                  for="ascvd-total-cholesterol"
-                  class="calculator__form--label"
-                  >Total Cholesterol (mmol/L)</label
+                <label for="calc-inr-dose" class="calculator__form--label"
+                  >WEEKLY Warfarin Dose</label
                 >
                 <input
                   type="number"
-                  step="any"
+                  id="calc-inr-dose"
                   class="calculator__form--input"
-                  id="ascvd-total-cholesterol"
-                  placeholder="Norm: 3.9 - 5.2"
+                  placeholder="Dose (in mg)"
                   required
                 />
               </div>
               <div class="calculator__form--row">
-                <label for="ascvd-hdl" class="calculator__form--label"
-                  >HDL Cholesterol (mmol/L)</label
+                <label for="calc-inr-inr" class="calculator__form--label"
+                  >INR Reading</label
                 >
                 <input
                   type="number"
-                  step="any"
+                  id="calc-inr-inr"
                   class="calculator__form--input"
-                  id="ascvd-hdl"
-                  placeholder="Norm: 0 - 1.55"
+                  placeholder="INR"
                   required
                 />
-              </div>
-              <div class="calculator__form--row">
-                <label for="ascvd-sbp" class="calculator__form--label"
-                  >Systolic Blood Pressure (mmHg)</label
-                >
-                <input
-                  type="number"
-                  class="calculator__form--input"
-                  id="ascvd-sbp"
-                  placeholder="Norm: 100 - 120"
-                  required
-                />
-              </div>
-              <div class="calculator__form--row">
-                <label for="ascvd-htn" class="calculator__form--label"
-                  >Treatment for Hypertension</label
-                >
-                <select
-                  id="ascvd-htn"
-                  name="ascvd-htn"
-                  class="calculator__form--dropdown"
-                >
-                  <option value="0">No</option>
-                  <option value="1">Yes</option>
-                </select>
-              </div>
-              <div class="calculator__form--row">
-                <label for="ascvd-race" class="calculator__form--label"
-                  >Race</label
-                >
-                <select
-                  id="ascvd-race"
-                  name="ascvd-race"
-                  class="calculator__form--dropdown"
-                >
-                  <option value="0">White / Other</option>
-                  <option value="1">African American</option>
-                </select>
               </div>
               <div class="calculator__form--submit">
-                <button class="calculator__form--btn" id="calc-ascvd-submit">
+                <button class="calculator__form--btn" id="calc-inr-submit">
                   <span class="calculator__form--btn--txt">Calculate</span>
                   <ion-icon
                     name="calculator"
@@ -2593,7 +3087,7 @@
                 </button>
                 <button
                   class="calculator__form--btn calculator__form--btn--reset"
-                  id="calc-ascvd-reset"
+                  id="calc-inr-reset"
                 >
                   <span class="calculator__form--btn--txt">Clear</span>
                   <ion-icon
@@ -2603,97 +3097,80 @@
                 </button>
               </div>
             </form>
-            <div class="calculator__result" id="calc-ascvd-result">
-              <h3 class="calculator__result--header">Result</h3>
+            <div id="calc-inr-result" class="calculator__result">
+              <!-- <h3 class="calculator__result--header">Result</h3>
               <div
                 class="calculator__result--jombotron calculator__result--jombotron--small"
               >
-                <span>42.0%</span>
+                <span>New Weekly Dose: &mdash;</span>
+                <br />
+                <span>min: 13.2 mg</span>
+                <span>max: 13.8 mg</span>
               </div>
               <p class="calculator__result--explaination">
-                Risk of cardiovascular event (coronary or stroke death or
-                non-fatal MI or stroke) in next 10 years is
-                <span class="highlight">42.0%</span>
+                Source:
+                <a href="https://www.omnicalculator.com/health/warfarin-dosing"
+                  >Omnicalculator</a
+                >
                 <br />
-                Moderate- to high-intensity statin recommended because 10-year
-                risk >7.5%
-              </p>
+                With a weekly dose of 12 mg, the INR reading was 1.2. It is
+                recommended to [increase the weekly dose by 10 - 15%].
+                <br />
+                <strong>With an INR &lt; 5.0</strong>
+                , for a rapid reversal: Hold wafarin and give vitamin K 1mg IV
+                infusion or 2 mg PO. This also applies for
+                <span class="highlight"
+                  >patients requiring urgent surgery.</span
+                >
+                <br />
+                In an occasion of
+                <strong>serious bleeding</strong>, hold warfarin and give
+                vitamin K (10 mg slow infusion) and supplement with fresh plasma
+                or prothrombin complex concentrate, depending on the urgency of
+                the situation.
+                <br />
+                Recombinant factor VIIa may be considered as an alternative to
+                PCC.
+                <br />
+                Vitamin K can be repeated Q12H.
+              </p> -->
             </div>
             <div class="calculator__ref">
               <h3 class="calculator__ref--header">References</h3>
+              <h3 class="calculator__ref--header">Warfarin Dose Initiation</h3>
+              <ul class="calculator__ref--container--list">
+                <li class="calculator__ref--container--index">
+                  1. Obtain a baseline INR
+                </li>
+                <li class="calculator__ref--container--index">
+                  2. Measure INR within 7 days of initiation
+                </li>
+                <li class="calculator__ref--container--index">
+                  3. Start with 3-5 mg for the first 3 days and subsequent
+                  dosing based on INR
+                </li>
+                <li class="calculator__ref--container--index">
+                  4. Starting dose can be &#8804; 3 mg/day for sensitive pts
+                  (elderly, debilitated, recent major surgery, on meds that
+                  &UpArrow; warfarin sensitivity)
+                </li>
+                <li class="calculator__ref--container--index">
+                  5. Therapeutic INR is usually achieved within 5-10 days
+                </li>
+                <li class="calculator__ref--container--index">
+                  <p class="calculator__ref--container--src">
+                    Source:
+                    <a
+                      href="guidelines/Chronic/MTAC Anticoagulant 2020.pdf"
+                      target="_blank"
+                      >MTAC Anticoagulant Jan 2020 (M'sia)</a
+                    >
+                  </p>
+                </li>
+              </ul>
               <div class="calculator__ref--container">
                 <h3 class="calculator__ref--container--header small-margin-top">
-                  Intensity of Statin Therapy
-                </h3>
-                <div class="calculator__ref--container--row">
-                  <table class="calculator__ref--container--table">
-                    <thead>
-                      <tr>
-                        <th>Statin</th>
-                        <th>Examples</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td rowspan="2">
-                          High - Intensity (Approx. &GreaterEqual; 50% LDL
-                          reduction)
-                        </td>
-                        <td>Atorvastatin 40-80 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Rosuvastatin 20-40 mg</td>
-                      </tr>
-                      <tr>
-                        <td rowspan="8">
-                          Moderate - Intensity (Approx. 30% - 50% LDL reduction)
-                        </td>
-                        <td>Atorvastatin 10-20 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Rosuvastatin 5-10 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Simvastatin 20-40 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Pravastatin 40-80 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Lovastatin 40 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Fluvastatin XL 80 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Fluvastatin 40 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Pitavastatin 2-4 mg bid</td>
-                      </tr>
-                      <tr>
-                        <td rowspan="5">
-                          Low - Intensity (Approx. &lt; 30% LDL reduction)
-                        </td>
-                        <td>Simvastatin 10 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Pravastatin 10-20 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Lovastatin 20 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Fluvastatin 20-40 mg</td>
-                      </tr>
-                      <tr>
-                        <td>Pitavastatin 1 mg</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <h3 class="calculator__ref--container--header small-margin-top">
-                  Scoring
+                  Warfarin Dose Adjustment Based on INR (Target INR: 2-3)
                 </h3>
                 <div class="calculator__ref--container--row">
                   <table
@@ -2701,26 +3178,69 @@
                   >
                     <thead>
                       <tr>
-                        <th>Total Score</th>
-                        <th>Class</th>
-                        <th>Prognosis</th>
+                        <th>INR</th>
+                        <th>Adjustment Recommendations</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>5 - 6</td>
-                        <td>Child-Pugh A</td>
-                        <td>Well-compensated disease</td>
+                        <td>&lt; 1.5</td>
+                        <td>
+                          Consider increasing maintenance dose by 5-20%.<br />
+                          Consider a single booster of 1.5-2× the daily
+                          maintenance dose.<br />
+                          Schedule the next appointment in 3-7 days.
+                        </td>
                       </tr>
                       <tr>
-                        <td>7 - 9</td>
-                        <td>Child-Pugh B</td>
-                        <td>Significant functional compromise</td>
+                        <td>1.5-1.7</td>
+                        <td>
+                          Consider increasing maintenance dose by 5-15%.<br />
+                          Consider a single booster of 1.5-2× the daily
+                          maintenance dose.<br />
+                          Schedule the next appointment in 3-7 days.
+                        </td>
                       </tr>
                       <tr>
-                        <td>10 - 15</td>
-                        <td>Child-Pugh C</td>
-                        <td>Decompensated disease (poor prognosis)</td>
+                        <td>1.8-1.9</td>
+                        <td>
+                          If the two previous INRs were in range, you might
+                          consider not making any adjustments to the dose.<br />
+                          Consider increasing maintenance dose by 5-10%.<br />
+                          Consider a single booster of 1.5-2× the daily
+                          maintenance dose.<br />
+                          Schedule the next appointment in 3-7 days.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2.0-3.0</td>
+                        <td>Desired range.</td>
+                      </tr>
+                      <tr>
+                        <td>3.1-3.2</td>
+                        <td>
+                          If the two previous INRs were in range, you might
+                          consider not making any adjustments to the dose.<br />
+                          Consider omitting one dose or decreasing maintenance
+                          dose by 5-10%.<br />
+                          Schedule the next appointment in 3-7 days.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3.5-3.9</td>
+                        <td>
+                          Consider omitting one dose or decreasing maintenance
+                          dose by 5-15%.<br />
+                          Schedule the next appointment in 1-3 days.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>&gt; 4.0</td>
+                        <td>
+                          Hold warfarin or decrease maintenance dose by
+                          5-20%.<br />
+                          Schedule the next appointment in 1 day.
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -2730,16 +3250,16 @@
                     <p class="calculator__ref--container--src">
                       Source:
                       <a
-                        href="https://www.mdcalc.com/calc/340/child-pugh-score-cirrhosis-mortality"
+                        href="https://www.omnicalculator.com/health/warfarin-dosing"
                         target="_blank"
-                        >MdCalc.com</a
+                        >Omnicalculator</a
                       >
                     </p>
                   </li>
                 </ul>
               </div>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>

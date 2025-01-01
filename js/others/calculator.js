@@ -1,128 +1,426 @@
 import * as helper from "../config.js";
 
-/*
-class ASCVDRisk {
+export class DenverRisk {
+  constructor(age, gender, sexual, others, race) {
+    this.age = age;
+    this.gender = gender;
+    this.sexual = sexual;
+    this.others = others;
+    this.race = race;
+
+    this.pronounce = +this.gender === 0 ? "She" : "He";
+
+    this.calcRisk();
+  }
+
+  calcRisk() {
+    const score =
+      Number(this.age) +
+      Number(this.gender) +
+      Number(this.sexual) +
+      Number(this.others) +
+      Number(this.race);
+
+    let risk;
+    let prevalence;
+    if (score < 20) {
+      risk = "Very Low";
+      prevalence = "0.31%";
+    } else if (score < 30) {
+      risk = "Low";
+      prevalence = "0.41%";
+    } else if (score < 40) {
+      risk = "Moderate";
+      prevalence = "0.99%";
+    } else if (score < 50) {
+      risk = "High";
+      prevalence = "1.59%";
+    } else {
+      risk = "Very High";
+      prevalence = "3.59%";
+    }
+
+    this.score = score;
+    this.risk = risk;
+    this.prevalence = prevalence;
+  }
+
+  getMarkup() {
+    const markup = `
+    <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>${this.score} points</span>
+                <span>${this.risk} Risk</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Client has a Denver score of
+                <span class="highlight">${this.score}</span> points. Hence, ${
+      this.pronounce === "She" ? "her" : "his"
+    } risk
+                of being diagnosed with HIV is
+                <span class="highlight">${this.risk}</span>. <br />
+                ${this.pronounce} has a HIV prevalence of
+                <span class="highlight">${this.prevalence}</span>.
+              </p>
+    `;
+
+    return markup;
+  }
+}
+
+export class AnticoagulantConv {
+  constructor(from, to) {
+    this.from = from;
+    this.to = to;
+
+    this.instruction = this.getInstruction();
+  }
+
+  getInstruction() {
+    const anticoagulants = {
+      Warfarin: {
+        Warfarin: "N/A",
+        LMWH: "N/A",
+        UFH: "N/A",
+        Dabigatran: `Stop Warfarin and start Dabigatran when INR < 2.0`,
+        Rivaroxaban: `<strong>AF</strong> - Stop Warfarin and start Rivaroxaban when INR ≤ 3.0 <br /><strong>DVT or PE</strong> - Stop Warfarin and start Rivaroxaban when INR ≤ 2.5`,
+        Apixaban: `Stop Warfarin and start Apixaban when INR ≤ 2.0`,
+      },
+      LMWH: {
+        Warfarin: "N/A",
+        LMWH: "N/A",
+        UFH: "N/A",
+        Dabigatran: `Start Dabigatran 0 to 2 hours prior to the time of the next dose of LMWH`,
+        Rivaroxaban: `<strong>DVT or PE</strong><br />1. Start Rivaroxaban 0 to 2 hours prior to the next dose of LMWH. <br />2. If patient is in the initial phase (1st 21 days), continue Rivaroxaban 15 mg twice daily for the 1st 21 days, then switch to 20 mg once daily. <br />3. If the patient is on LMWH for more than 21 days, start Rivaroxaban 20 mg once daily 0 to 2 hours before the next dose of LMWH. <br /><br /><strong>Orthopedic Surgery</strong><br />Start Rivaroxaban 0 to 2 hours prior to the next dose of LMWH.`,
+        Apixaban: "N/A",
+      },
+      UFH: {
+        Warfarin: "N/A",
+        LMWH: "N/A",
+        UFH: "N/A",
+        Dabigatran: `Start Dabigatran at the time of discontinuation of the continuous Heparin.`,
+        Rivaroxaban: "N/A",
+        Apixaban: `To be done at the next scheduled dose.`,
+      },
+      Dabigatran: {
+        Warfarin: `<strong>CrCl ≥ 50 mL/min</strong>: Start Warfarin 3 days before discontinuing. <br /><strong>CrCl 30-50 mL/min</strong>: Start Warfarin 2 days before discontinuing. <br /><strong>CrCl 15 - 30 mL/min</strong>: Start Warfarin 1 day before discontinuing.`,
+        LMWH: `Start LMWH 12 hours after the last dose of Dabigatran.`,
+        UFH: `If CrCl ≥ 30 - wait 12 hours. Else, wait 24 hours after the last dose of Dabigatran before initiating parenteral treatment.`,
+        Dabigatran: "N/A",
+        Rivaroxaban: "N/A",
+        Apixaban: "N/A",
+      },
+      Rivaroxaban: {
+        Warfarin: `One approach is to discontinue Rivaroxaban and begin both a parenteral anticoagulant and Warfarin at the time of the next Rivaroxaban dose.`,
+        LMWH: "N/A",
+        UFH: "N/A",
+        Dabigatran: "N/A",
+        Rivaroxaban: "N/A",
+        Apixaban: "N/A",
+      },
+      Apixaban: {
+        Warfarin: `1. Continue Apixaban for at least 2 days after beginning Warfarin. <br />2. Check INR on day 2. <br />3. Continue Apixaban and Warfarin until the INR is ≥ 2.0.`,
+        LMWH: "N/A",
+        UFH: "N/A",
+        Dabigatran: "N/A",
+        Rivaroxaban: "N/A",
+        Apixaban: "N/A",
+      },
+    };
+
+    return anticoagulants[this.from][this.to];
+  }
+
+  getMarkup() {
+    const markup = `
+    <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <br />
+                <span>${this.from} To ${this.to}</span>
+              </div>
+              <p class="calculator__result--explaination">
+               ${this.instruction}
+              </p>
+    `;
+
+    return markup;
+  }
+}
+
+export class warfarinDoseAdj {
+  constructor(dose, inr) {
+    this.dose = dose;
+    this.inr = inr;
+  }
+
+  getCurStatus() {
+    let minDose;
+    let maxDose;
+    let recommendationDose;
+    let recommendationTca;
+
+    if (this.inr < 1.5) {
+      minDose = (1.05 * this.dose).toFixed(1);
+      maxDose = (1.2 * this.dose).toFixed(1);
+      recommendationDose = "Consider increasing maintenance dose by 5-20%";
+      recommendationTca = "Schedule next appointment in 3-7 days";
+    } else if (this.inr < 1.8) {
+      minDose = (1.05 * this.dose).toFixed(1);
+      maxDose = (1.15 * this.dose).toFixed(1);
+      recommendationDose = "Consider increasing maintenance dose by 5-15%.";
+      recommendationTca = "Schedule the next appointment in 3-7 days.";
+    } else if (this.inr < 2) {
+      minDose = (1 * this.dose).toFixed(1);
+      maxDose = (1.1 * this.dose).toFixed(1);
+      recommendationDose =
+        "If the two previous INRs were in range, you might consider not making any adjustments to the dose. Consider increasing maintenance dose by 5-10%. Or Consider a single booster of 1.5-2x the daily maintenance dose.";
+      recommendationTca = "Schedule the next appointment in 3-7 days.";
+    } else if (this.inr <= 3) {
+      minDose = (1 * this.dose).toFixed(1);
+      maxDose = minDose;
+      recommendationDose = "Desired range";
+      recommendationTca = "";
+    } else if (this.inr < 3.5) {
+      minDose = (0.9 * this.dose).toFixed(1);
+      maxDose = (1 * this.dose).toFixed(1);
+      recommendationDose =
+        "If the two previous INRs were in range, you might consider not making any adjustments to the dose. Consider omitting one dose or decreasing maintenance dose by 5-10%.";
+      recommendationTca = "Schedule the next appointment in 3-7 days.";
+    } else if (this.inr < 4) {
+      minDose = (0.85 * this.dose).toFixed(1);
+      maxDose = (0.95 * this.dose).toFixed(1);
+      recommendationDose =
+        "Consider omitting one dose or decreasing maintenance dose by 5-15%.";
+      recommendationTca = "Schedule the next appointment in 1-3 days.";
+    } else {
+      minDose = (0.8 * this.dose).toFixed(1);
+      maxDose = (0.95 * this.dose).toFixed(1);
+      recommendationDose =
+        "Hold warfarin or decrease maintenance dose by 5-20%";
+      recommendationTca = "Schedule the next appointment in 1 day.";
+    }
+
+    return [minDose, maxDose, recommendationDose, recommendationTca];
+  }
+
+  getMarkup() {
+    const [minDose, maxDose, recommendationDose, recommendationTca] =
+      this.getCurStatus();
+
+    const markup = `
+    <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>New Weekly Dose: &mdash;</span>
+                <br />
+                <span>min: ${minDose} mg</span>
+                <span>max: ${maxDose} mg</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Source:
+                <a href="https://www.omnicalculator.com/health/warfarin-dosing"
+                  >Omnicalculator</a
+                >
+                <br />
+                With a weekly dose of ${this.dose} mg, the INR reading was ${this.inr}. ${recommendationDose}
+                <br />
+${recommendationTca}
+                <br />
+                <strong>With an INR &lt; 5.0</strong>
+                , for a rapid reversal: Hold wafarin and give vitamin K 1mg IV
+                infusion or 2 mg PO. This also applies for
+                <span class="highlight"
+                  >patients requiring urgent surgery.</span
+                >
+                <br />
+                In an occasion of
+                <strong>serious bleeding</strong>, hold warfarin and give
+                vitamin K (10 mg slow infusion) and supplement with fresh plasma
+                or prothrombin complex concentrate, depending on the urgency of
+                the situation.
+                <br />
+                Recombinant factor VIIa may be considered as an alternative to
+                PCC.
+                <br />
+                Vitamin K can be repeated Q12H.
+              </p>
+    `;
+
+    return markup;
+  }
+}
+
+export class ascvdRisk {
   constructor(
     age,
     diabetes,
     sex,
     smoker,
-    totalCholMMOL, // Total cholesterol in mmol/L
-    hdlCholMMOL, // HDL cholesterol in mmol/L
+    totalChol,
+    hdlChol,
     sbp,
-    txHypertension
+    txHypertension,
+    race
   ) {
     this.age = age;
-    this.diabetes = diabetes;
-    this.sex = sex;
-    this.smoker = smoker;
-    this.totalCholMMOL = totalCholMMOL; // Total Cholesterol in mmol/L
-    this.hdlCholMMOL = hdlCholMMOL; // HDL Cholesterol in mmol/L
-    this.sbp = sbp; // Systolic Blood Pressure in mmHg
-    this.txHypertension = txHypertension; // Treated Hypertension (0 or 1)
+    this.diabetes = diabetes; // 1 = true, 0 = false
+    this.sex = sex; // 1 = male, 0 = female
+    this.smoker = smoker; // 1 = true, 0 = false
+    this.totalChol = totalChol; // in mmol/L
+    this.hdlChol = hdlChol; // in mmol/L
+    this.sbp = sbp;
+    this.txHypertension = txHypertension; // 1 = true, 0 = false
+    this.race = race; // 1 = African American, 0 = White/Other
+
+    this.calcRisk();
   }
 
   calcRisk() {
-    // Coefficients for Male and Female (based on Goff et al., 2014)
-    const maleConstants = {
-      intercept: -29.7997,
-      age: 0.0221,
-      totalChol: 0.0274,
-      hdlChol: -0.0196,
-      sbp: 0.0145,
-      diabetes: 0.3024,
-      smoker: 0.3005,
-      txHypertension: 0.1302,
-    };
-    const femaleConstants = {
-      intercept: -29.7997,
-      age: 0.0215,
-      totalChol: 0.0225,
-      hdlChol: -0.0273,
-      sbp: 0.0132,
-      diabetes: 0.3511,
-      smoker: 0.3851,
-      txHypertension: 0.1461,
+    // Coefficients for each race-sex group
+    const coefficients = {
+      whiteMale: {
+        ln_age: 12.344,
+        ln_tc: 11.853,
+        ln_age_ln_tc: -2.664,
+        ln_hdl: -7.99,
+        ln_age_ln_hdl: 1.769,
+        ln_treated_sbp: 1.797,
+        ln_untreated_sbp: 1.764,
+        smoker: 7.837,
+        ln_age_smoker: -1.795,
+        diabetes: 0.658,
+        baseline_survival: 0.9144,
+        mean_coefficient_sum: 61.18,
+      },
+      whiteFemale: {
+        ln_age: -29.799,
+        ln_age_squared: 4.884,
+        ln_tc: 13.54,
+        ln_age_ln_tc: -3.114,
+        ln_hdl: -13.578,
+        ln_age_ln_hdl: 3.149,
+        ln_treated_sbp: 2.019,
+        ln_untreated_sbp: 1.957,
+        smoker: 7.574,
+        ln_age_smoker: -1.665,
+        diabetes: 0.661,
+        baseline_survival: 0.9665,
+        mean_coefficient_sum: -29.18,
+      },
+      africanAmericanMale: {
+        ln_age: 2.469,
+        ln_tc: 0.302,
+        ln_hdl: -0.307,
+        ln_treated_sbp: 1.916,
+        ln_untreated_sbp: 1.809,
+        smoker: 0.549,
+        diabetes: 0.645,
+        baseline_survival: 0.8954,
+        mean_coefficient_sum: 19.54,
+      },
+      africanAmericanFemale: {
+        ln_age: 17.114,
+        ln_tc: 0.94,
+        ln_hdl: -18.92,
+        ln_treated_sbp: 29.291,
+        ln_untreated_sbp: 27.82,
+        smoker: 0.691,
+        diabetes: 0.874,
+        baseline_survival: 0.9533,
+        mean_coefficient_sum: 86.61,
+      },
     };
 
-    // Check if cholesterol values are valid numbers before converting
-    if (isNaN(this.totalCholMMOL) || isNaN(this.hdlCholMMOL)) {
-      console.error(
-        "Invalid cholesterol values:",
-        this.totalCholMMOL,
-        this.hdlCholMMOL
+    // Select coefficients based on race and sex
+    let coeff;
+    if (this.race === 0 && this.sex === 1) coeff = coefficients.whiteMale;
+    else if (this.race === 0 && this.sex === 0)
+      coeff = coefficients.whiteFemale;
+    else if (this.race === 1 && this.sex === 1)
+      coeff = coefficients.africanAmericanMale;
+    else if (this.race === 1 && this.sex === 0)
+      coeff = coefficients.africanAmericanFemale;
+    else throw new Error("Invalid race or sex input");
+
+    // Convert mmol/L to mg/dL
+    const totalChol_mg = this.totalChol * 38.67;
+    const hdlChol_mg = this.hdlChol * 38.67;
+
+    // Calculate natural logarithms
+    const ln_age = Math.log(this.age);
+    const ln_tc = Math.log(totalChol_mg);
+    const ln_hdl = Math.log(hdlChol_mg);
+    const ln_sbp = Math.log(this.sbp);
+
+    // Calculate terms
+    const terms = {
+      ln_age: coeff.ln_age * ln_age,
+      ln_tc: coeff.ln_tc * ln_tc,
+      ln_age_ln_tc: coeff.ln_age_ln_tc
+        ? coeff.ln_age_ln_tc * ln_age * ln_tc
+        : 0,
+      ln_hdl: coeff.ln_hdl * ln_hdl,
+      ln_age_ln_hdl: coeff.ln_age_ln_hdl
+        ? coeff.ln_age_ln_hdl * ln_age * ln_hdl
+        : 0,
+      sbp: this.txHypertension
+        ? coeff.ln_treated_sbp * ln_sbp
+        : coeff.ln_untreated_sbp * ln_sbp,
+      smoker: coeff.smoker * this.smoker,
+      ln_age_smoker: coeff.ln_age_smoker
+        ? coeff.ln_age_smoker * ln_age * this.smoker
+        : 0,
+      diabetes: coeff.diabetes * this.diabetes,
+      ln_age_squared: coeff.ln_age_squared
+        ? coeff.ln_age_squared * ln_age ** 2
+        : 0,
+    };
+
+    // Sum all terms
+    const individualSum = Object.values(terms).reduce(
+      (acc, val) => acc + val,
+      0
+    );
+
+    // Calculate risk
+    const risk =
+      1 -
+      Math.pow(
+        coeff.baseline_survival,
+        Math.exp(individualSum - coeff.mean_coefficient_sum)
       );
-      return "Invalid cholesterol values!";
-    }
 
-    // Convert total cholesterol and HDL from mmol/L to mg/dL
-    const totalChol = this.totalCholMMOL * 38.67;
-    const hdlChol = this.hdlCholMMOL * 38.67;
+    // Convert risk to percentage
+    this.risk = (risk * 100).toFixed(2);
+  }
 
-    // Debugging: Output the converted values to ensure correct conversion
-    console.log("Converted Total Cholesterol (mg/dL):", totalChol);
-    console.log("Converted HDL Cholesterol (mg/dL):", hdlChol);
-
-    // Choose constants based on sex
-    const constants = this.sex === "Male" ? maleConstants : femaleConstants;
-
-    // Log intermediate values for debugging
-    console.log("Age:", this.age);
-    console.log("Total Cholesterol (mg/dL):", totalChol);
-    console.log("HDL Cholesterol (mg/dL):", hdlChol);
-    console.log("Systolic BP (mmHg):", this.sbp);
-    console.log("Diabetes:", this.diabetes);
-    console.log("Smoker:", this.smoker);
-    console.log("Treated Hypertension:", this.txHypertension);
-
-    // Calculate the logit score using the formula
-    const logit =
-      constants.intercept +
-      constants.age * this.age +
-      constants.totalChol * totalChol +
-      constants.hdlChol * hdlChol +
-      constants.sbp * this.sbp +
-      constants.diabetes * this.diabetes +
-      constants.smoker * this.smoker +
-      constants.txHypertension * this.txHypertension;
-
-    // Debugging: Output the logit value to check its magnitude
-    console.log("Logit Value:", logit);
-
-    // Check if logit is too extreme (adjust if needed)
-    if (logit > 30) {
-      console.log("Logit is extremely high, risk is close to 100%");
-      return 100;
-    } else if (logit < -30) {
-      console.log("Logit is extremely low, risk is close to 0%");
-      return 0;
-    }
-
-    // Convert the logit score to a probability using the logistic function
-    const risk = 1 / (1 + Math.exp(-logit)); // Logistic function to convert logit to probability
-
-    // Debugging: Output the risk probability before converting to percentage
-    console.log("Calculated Risk Probability:", risk);
-
-    // Convert to percentage
-    return Math.round(risk * 100);
+  getMarkup() {
+    const markup = `
+     <h3 class="calculator__result--header">Result</h3>
+              <div
+                class="calculator__result--jombotron calculator__result--jombotron--small"
+              >
+                <span>${this.risk}%</span>
+              </div>
+              <p class="calculator__result--explaination">
+                Risk of cardiovascular event (coronary or stroke death or
+                non-fatal MI or stroke) in <span class="highlight">next 10 years</span>
+                 is
+                <span class="highlight">${this.risk}%</span>.
+                <br />
+                While the score was developed and validated in a large population, several studies have suggested that the risk calculator substantially over-estimates 10-year risk. (Some studies have suggested that its risk estimates are accurate.)
+                <br />
+Statins are highly emphasized in the guidelines and recommendations, but lifestyle modifications are likely just as - if not more - important to ASCVD risk.
+              </p>
+    `;
+    return markup;
   }
 }
-
-// Test with the same data
-const riskCalc = new ASCVDRisk(
-  50, // age
-  1, // diabetes (1 = yes, 0 = no)
-  "Male", // sex
-  1, // smoker (1 = yes, 0 = no)
-  5.0, // totalChol (mmol/L) (typical for healthy range)
-  1.2, // hdlChol (mmol/L) (typical for healthy range)
-  120, // sbp (systolic blood pressure)
-  0 // txHypertension (1 = treated, 0 = untreated)
-);
-
-console.log("ASCVD Risk:", riskCalc.calcRisk() + "%"); // Output the final risk
-*/
 
 export class ChildPugh {
   constructor(score) {

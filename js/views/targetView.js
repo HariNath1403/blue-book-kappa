@@ -96,7 +96,7 @@ class TargetView extends Master {
   loadTargetPageMarkup(drug) {
     const genericName = drug["Generic"];
     const brandName = drug["Brand"];
-    const prescriberCategory = drug["Categroy"];
+    const prescriberCategory = drug["Category"];
     const indication = drug["Indications"];
     const dosage = drug["Dosage"];
     const restrictions = drug["Restrictions"];

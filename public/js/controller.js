@@ -95,12 +95,18 @@ const filterCpgSearchResults = function (file) {
 };
 
 const loadPdfFile = async function (file, location) {
-  cpgView.insertSpinner();
-  const [pdfFilePath, page] = cpgView.getTargetFileLocation(file, location);
-
-  await cpgView.launchPdfDoc(pdfFilePath, page);
-
-  cpgView.removeSpinner();
+  try {
+    cpgView.insertSpinner();
+    const [pdfFilePath, page] = await cpgView.getTargetFileLocation(
+      file,
+      location
+    );
+    window.open(`/guidelines/${pdfFilePath}#page=${page}`, "_blank");
+    cpgView.removeSpinner();
+  } catch (error) {
+    console.error("Error loading PDF:", error);
+    cpgView.removeSpinner();
+  }
 };
 
 const initCpgFxs = function () {

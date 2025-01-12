@@ -4,17 +4,27 @@
   "description": "landing page",
   "main": "index.js",
   "scripts": {
-    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "watch:sass": "node-sass public/sass/main.scss public/css/style.css -w",
     "devserver": "live-server",
-    "start": "npm-run-all --parallel devserver watch:sass",
-    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
-    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
-    "build": "npm-run-all compile:sass prefix:sass compress:css"
+    "start:front": "npm-run-all --parallel devserver watch:sass",
+    "compile:sass": "node-sass public/sass/main.scss public/css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' public/css/style.comp.css -o public/css/style.prefix.css",
+    "compress:css": "node-sass public/css/style.prefix.css public/css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:sass compress:css",
+    "start:back": "nodemon server.js",
+    "start:dev": "npm-run-all --parallel start:back start:front",
+    "start": "node server.js",
+    "watch:js": "parcel watch ./public/js/controller.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel build ./public/js/controller.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "Hari",
   "license": "ISC",
   "devDependencies": {
     "node-sass": "^9.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
   }
 }

@@ -134,11 +134,54 @@ class CpgView {
     const url = config.nagUrl;
     window.open(url, "_blank");
   }
-
+  /*
   async launchPdfDoc(path, page) {
     const url = `../../guidelines-old/${path}`;
     window.open(`${url}#page=${page}`, "_blank");
   }
+  launchPdfDoc(path, page) {
+    /*
+    const url = `../guidelines-old/${path}#page=${page}`;
+    const iframe = document.createElement("iframe");
+    iframe.src = url;
+    iframe.width = "100%";
+    iframe.height = "600px";
+    document.body.appendChild(iframe);
+
+    // ////////
+    const url = `../../guidelines-old/${path}`;
+
+    console.log(url);
+
+    // Initialize the PDF.js worker
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js";
+
+    const loadingTask = pdfjsLib.getDocument(url);
+    loadingTask.promise
+      .then(function (pdf) {
+        if (page < 1 || page > pdf.numPages) {
+          console.error("Invalid page number");
+          return;
+        }
+
+        pdf.getPage(page).then(function (page) {
+          const scale = 1;
+          const viewport = page.getViewport({ scale: scale });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          document.body.appendChild(canvas);
+
+          page.render({ canvasContext: context, viewport: viewport });
+        });
+      })
+      .catch(function (error) {
+        console.error("Error loading PDF:", error);
+      });
+  }
+  */
 
   insertSpinner() {
     const spinner = `<div class="cpg__results--box--spinner">

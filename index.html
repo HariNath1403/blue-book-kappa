@@ -27,7 +27,7 @@
             </button>
           </li>
           <li class="nav__list--item">
-            <button class="nav__list--btn">
+            <button class="nav__list--btn" id="nav-load-cpg">
               <ion-icon name="earth" class="nav__list--btn--icon"></ion-icon>
               <span class="nav__list--btn--txt">CPGs</span>
             </button>
@@ -88,6 +88,165 @@
 
           <div class="formulary__results">
             <ul class="formulary__results--list"></ul>
+          </div>
+        </div>
+        <div id="cpg" class="cpg hide-display">
+          <form action="#" class="cpg__form">
+            <h3 class="cpg__form--instruction">
+              Please select a folder to initiate data search.
+            </h3>
+            <div class="cpg__form--radio">
+              <label>
+                <input
+                  type="radio"
+                  name="cpg-category"
+                  value="nag"
+                  checked
+                  required
+                />
+                Malaysian NAG (2024)
+              </label>
+              <label>
+                <input type="radio" name="cpg-category" value="chronic" />
+                Chronic Conditions (CVS, DM)
+              </label>
+              <label>
+                <input type="radio" name="cpg-category" value="infxn" />
+                Infectious Diseases (STI 2021, TB)
+              </label>
+              <label>
+                <input type="radio" name="cpg-category" value="psy" />
+                Mental Health
+              </label>
+              <label>
+                <input type="radio" name="cpg-category" value="respi" />
+                Respiratory Conditions
+              </label>
+              <label>
+                <input type="radio" name="cpg-category" value="paed" />
+                Pediatrics
+              </label>
+              <label>
+                <input type="radio" name="cpg-category" value="dilution" />
+                Dilution & Extemp Preparation
+              </label>
+              <label>
+                <input type="radio" name="cpg-category" value="others" />
+                Other Protocols / Guidelines
+              </label>
+            </div>
+            <div class="cpg__search">
+              <ion-icon name="search" class="cpg__search--icon"></ion-icon>
+              <input
+                type="text"
+                class="cpg__search--input"
+                placeholder="type query (min 5 char)"
+              />
+              <button class="cpg__search--clear">X</button>
+            </div>
+            <button class="cpg__btn">Search Folder</button>
+          </form>
+          <div class="cpg__results">
+            <div class="cpg__results--exit">
+              <button class="cpg__results--exit--btn">X</button>
+            </div>
+            <div class="cpg__filter">
+              <ul class="cpg__filter--list">
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-of-Acute-STEMI-2019</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-of-Chronic-Kidney-Disease-2018</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-of-Dyslipidaemia-2017</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-of-Heart-Failure-2019</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-of-Hypertension-2018</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-of-Ischemic-Stroke-2020</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-of-Stable-CAD-2018</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-of-STEMI-2019</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >Management-Type-2-Diabetes-Mellitus-2020</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+                <li class="cpg__filter--file">
+                  <span class="cpg__filter--file--name"
+                    >MTAC-Anticoagulant-2020</span
+                  >
+                  <button class="cpg__filter--file--btn">X</button>
+                </li>
+              </ul>
+            </div>
+            <div class="cpg__results--box">
+              <div class="cpg__results--box--spinner">
+                <div class="cpg__results--box--spinner--icon"></div>
+              </div>
+              <figure
+                class="cpg__results--card"
+                data-location="Management of Acute STEMI 2019#23"
+              >
+                <h2 class="cpg__results--card--file">
+                  Management of Acute STEMI 2019
+                </h2>
+
+                <p class="cpg__results--card--txt">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Animi obcaecati sed vel, architect hyghd dfmlkm...
+                </p>
+                <h3 class="cpg__results--card--page">Page 23</h3>
+              </figure>
+              <figure
+                class="cpg__results--card"
+                data-location="Management of Acute STEMI 2019#23"
+              >
+                <h2 class="cpg__results--card--file">
+                  Management of Acute STEMI 2019
+                </h2>
+
+                <p class="cpg__results--card--txt">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Animi obcaecati sed vel, architect hyghd dfmlkm...
+                </p>
+                <h3 class="cpg__results--card--page">Page 23</h3>
+              </figure>
+            </div>
           </div>
         </div>
         <div id="calculator" class="calculator hide-display">
@@ -3377,6 +3536,7 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
     <script type="module" src="js/controller.js"></script>
     <script
       type="module"

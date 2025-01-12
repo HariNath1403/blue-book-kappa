@@ -1,3 +1,4 @@
+import * as config from "./config.js";
 // FORMULARY
 export let allData;
 export const allDrugs = [];
@@ -43,4 +44,33 @@ export const transferDataToCalcDict = function (ids, headers, subs) {
   }
 
   return calculatorDict;
+};
+
+// CPG
+export const searchFolders = async function (folder, allFiles, query) {
+  const results = [];
+  try {
+    for (const file of allFiles) {
+      const filePath = `${folder}/${file}`;
+      const response = await fetch(filePath);
+      const fileData = await response.json();
+
+      fileData.forEach((no) => {
+        const pgNo = no["page_number"];
+        const txt = no["text"].toLowerCase();
+
+        if (txt.includes(query)) {
+          const snippet = config.getSnippet(txt, query);
+          results.push({
+            name: file.split(".json")[0],
+            text: snippet,
+            page: pgNo,
+          });
+        }
+      });
+    }
+    return results;
+  } catch (err) {
+    console.error("Error loading or processing the file:", err);
+  }
 };

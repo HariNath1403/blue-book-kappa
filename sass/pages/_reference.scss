@@ -1,0 +1,229 @@
+.cpg {
+  position: inherit;
+
+  &__form {
+    padding: $space-gap $space-small;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &--instruction {
+      font-size: calc(#{$text-mini + $text-small}/ 2);
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    &--radio {
+      margin-top: $space-small;
+      margin-left: $space-small;
+      @include flex-box-col;
+      gap: $space-supersmall;
+      font-size: $text-mini;
+      // justify-content: flex-start;
+      align-items: flex-start;
+
+      label {
+        @include flex-box-row;
+        gap: $space-mini;
+      }
+    }
+  }
+
+  &__search {
+    @include flex-box-row;
+    margin: $space-sub 0;
+    padding: 0 $space-small;
+    position: relative;
+
+    &--icon {
+      background-color: $color-main;
+      color: $color-background;
+      font-size: $text-small;
+      // padding: $space-mini $space-supersmall;
+      padding: $space-mini 0 $space-mini $space-mini;
+      z-index: 2;
+    }
+
+    &--input {
+      width: 100%;
+      padding: $space-mini $space-supersmall $space-mini $space-mini;
+      padding-left: $space-gap;
+      transform: scaleX(1.1) translateX(-$space-mini);
+      font-size: calc(#{$text-mini + $text-small}/ 2);
+      font-family: inherit;
+      background-color: $color-main;
+      color: $color-background;
+      outline: none;
+      border: none;
+
+      &::placeholder {
+        font-family: inherit;
+        font-size: $text-mini;
+        color: inherit;
+      }
+    }
+
+    &--clear {
+      position: absolute;
+      top: calc(#{$space-mini + $space-supersmall}/ 2);
+      right: calc(#{$space-small + $space-sub}/ 2);
+      z-index: 2;
+      padding: $space-supersmall $space-mini;
+      background-color: transparent;
+      border: none;
+      color: $color-background;
+      transform: scale(1.25);
+    }
+  }
+
+  &__btn {
+    margin: 0 auto;
+    text-align: center;
+    padding: $space-mini $space-small;
+    font-size: calc(#{$text-small + $text-mini}/ 2);
+    color: $color-background;
+    background-color: $color-alert;
+    background-color: $color-grey;
+    border-radius: 3px;
+    @include box-shadow;
+  }
+
+  &__results {
+    position: absolute;
+    top: 9.85rem;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background-color: $color-background;
+    background-color: $color-white;
+    transform: translateX(100%);
+    transition: all 0.3s;
+
+    &--exit {
+      position: absolute;
+      top: $space-mini;
+      right: $space-supersmall;
+
+      &--btn {
+        padding: $space-supersmall $space-mini;
+        background-color: $color-alert;
+        color: $color-background;
+        font-size: $text-mini;
+        border: none;
+      }
+    }
+
+    &--empty {
+      margin-top: $space-small;
+      font-size: calc(#{$text-standard + $text-small}/ 2);
+      text-align: center;
+      color: $color-background;
+      line-height: 1.6;
+    }
+
+    &--box {
+      margin: $space-small;
+      padding: $space-gap $space-sub $space-standard;
+      background-color: $color-grey;
+      background-color: $color-main;
+      color: $color-background;
+      height: 40.5rem;
+      overflow-y: scroll;
+      @include flex-box-col;
+      gap: $space-small;
+    }
+
+    &--card {
+      @include flex-box-col;
+      align-items: flex-start;
+      width: 100%;
+      // gap: $text-supersmall;
+      background-color: $color-background;
+      color: $color-shade;
+      padding: $space-mini;
+
+      &:nth-child(even) {
+        background-color: $color-grey;
+        color: $color-background;
+      }
+
+      &--file {
+        font-size: calc(#{$text-mini + $text-supersmall}/ 2);
+      }
+
+      &--txt {
+        font-size: $text-supersmall;
+        // font-size: calc(#{$text-supersmall}/ 1.15);
+      }
+
+      &--page {
+        font-size: calc(#{$text-mini + $text-supersmall}/ 2);
+      }
+    }
+  }
+
+  &__filter {
+    @include flex-box-col;
+    margin: $space-small $space-small $space-supersmall;
+    padding: $space-small $space-mini;
+    background-color: $color-main;
+    color: $color-background;
+    height: 10rem;
+    overflow-y: scroll;
+
+    &--list {
+      @include flex-box-row;
+      gap: $space-supersmall;
+      flex-wrap: wrap;
+      font-size: $text-supersmall;
+      list-style: none;
+    }
+
+    &--file {
+      display: inline;
+      @include flex-box-row;
+
+      &--name {
+        display: inline;
+        background-color: $color-grey;
+        padding: calc(#{$space-supersmall}/ 2);
+        padding-right: $space-gap;
+      }
+
+      &--btn {
+        display: inline;
+        font-size: $text-supersmall;
+        border: none;
+        margin-left: -$space-sub;
+        background-color: $color-alert;
+        color: $color-background;
+        padding: 0 calc(#{$space-supersmall}/ 2);
+      }
+    }
+  }
+}
+
+// Spinner
+.cpg__results--box {
+  position: relative;
+
+  &--spinner {
+    width: 100%;
+    height: 100%;
+    margin: $space-small;
+    padding: $space-margin 0;
+
+    background-color: rgba($color-grey, 0.5);
+
+    &--icon {
+      width: $space-decent;
+      height: $space-decent;
+      border: 6.5px solid $color-background;
+      border-top: 6.5px solid $color-main;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: $space-sub auto;
+    }
+  }
+}

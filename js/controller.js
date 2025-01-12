@@ -3,6 +3,7 @@ import * as model from "./model.js";
 import allViews from "./views/allViews.js";
 import homeView from "./views/homeView.js";
 import targetView from "./views/targetView.js";
+import cpgView from "./views/cpgView.js";
 import calculatorView from "./views/calculatorView.js";
 
 const url = config.apiUrl;
@@ -10,6 +11,10 @@ const url = config.apiUrl;
 // NAV
 const navInits = function () {
   allViews.handlerLoadFormulary(config.loadFormulary);
+  allViews.handlerLoadCPG(() => {
+    loadCPGInterface();
+    cpgView.exitResultPage();
+  });
   allViews.handlerLoadCalculator(() => {
     config.loadCalculator();
     getCalculatorInfo();
@@ -53,6 +58,58 @@ const initFormularyFxs = function () {
   homeView.handlerClearSearchInput(clearFormularySearchInputBox);
   homeView.handlerActivateSearch(loadFormularySearchEngine);
   targetView.handlerCloseTargetPage(exitTargetPage);
+};
+
+// CPGs
+let cpgSearchResults;
+
+const loadCPGInterface = function () {
+  allViews.loadCPGPage();
+};
+
+const exitCpgResultsPage = function () {
+  cpgView.exitResultPage();
+};
+
+const loadCpgSearchResults = async function (folder, queryStr) {
+  const [folderPath, allFiles, cpqQueryStr] = cpgView.initiateSearch(
+    folder,
+    queryStr
+  );
+
+  if (!folderPath) return;
+
+  const results = await model.searchFolders(folderPath, allFiles, cpqQueryStr);
+  cpgSearchResults = results;
+  cpgView.transferDataToTemplate(results);
+};
+
+const filterCpgSearchResults = function (file) {
+  cpgSearchResults = cpgView.filterSearchDict(cpgSearchResults, file);
+
+  setTimeout(() => {
+    cpgView.updateResultsAfterFilter(cpgSearchResults);
+
+    cpgView.removeSpinner();
+  }, 500);
+};
+
+const loadPdfFile = async function (file, location) {
+  cpgView.insertSpinner();
+  const [pdfFilePath, page] = cpgView.getTargetFileLocation(file, location);
+
+  await cpgView.launchPdfDoc(pdfFilePath, page);
+
+  cpgView.removeSpinner();
+};
+
+const initCpgFxs = function () {
+  cpgView.handlerSearchFolder(loadCpgSearchResults);
+  cpgView.handlerSubmitQuery(loadCpgSearchResults);
+  cpgView.handlerClearFilterBtn(filterCpgSearchResults);
+  cpgView.handlerGetTargetLocation(loadPdfFile);
+  cpgView.handlerClearQueryInput();
+  cpgView.handlerExitResults(exitCpgResultsPage);
 };
 
 // CALCULATORS
@@ -114,6 +171,7 @@ const initCalcFxs = function () {
 navInits();
 document.addEventListener("DOMContentLoaded", initFx);
 initFormularyFxs();
+initCpgFxs();
 initCalcFxs();
 
 // Double-Click to EXIT App

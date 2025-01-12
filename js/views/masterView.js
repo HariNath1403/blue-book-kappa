@@ -1,9 +1,11 @@
 export default class Master {
   // All (Master Controls)
   navFormulary = document.getElementById("nav-load-formulary");
+  navCPGs = document.getElementById("nav-load-cpg");
   navCalculator = document.getElementById("nav-load-calculator");
 
   pageFormulary = document.getElementById("formulary");
+  pageCPG = document.getElementById("cpg");
   pageCalculator = document.getElementById("calculator");
 
   // Formulary

@@ -251,6 +251,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start; }
+    .cpg__form--spinner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 4;
+      width: 100%;
+      height: 100%;
+      padding: 5.6rem 0;
+      background-color: rgba(79, 79, 79, 0.85); }
+      .cpg__form--spinner--icon {
+        width: 7.2rem;
+        height: 7.2rem;
+        border: 6.5px solid #f2e7dc;
+        border-top: 6.5px solid #038c7f;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 2.8rem auto; }
     .cpg__form--instruction {
       font-size: calc(3.6rem/ 2);
       font-weight: 500;
@@ -425,7 +442,6 @@ body {
   .cpg__results--box--spinner {
     width: 100%;
     height: 100%;
-    margin: 1.8rem;
     padding: 5.6rem 0;
     background-color: rgba(79, 79, 79, 0.5); }
     .cpg__results--box--spinner--icon {
@@ -436,6 +452,21 @@ body {
       border-radius: 50%;
       animation: spin 1s linear infinite;
       margin: 2.8rem auto; }
+
+.reference {
+  max-width: 65rem;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #027373;
+  background-color: #f2e7dc; }
+  .reference__header {
+    font-size: 1.6rem;
+    text-align: center; }
+  .reference__frame {
+    height: 85vh;
+    width: 100%; }
 
 .calc__interface {
   text-align: center; }

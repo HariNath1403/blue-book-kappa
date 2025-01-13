@@ -7,6 +7,29 @@
     flex-direction: column;
     align-items: flex-start;
 
+    &--spinner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 4;
+      width: 100%;
+      height: 100%;
+      // margin: $space-small;
+      padding: $space-margin 0;
+
+      background-color: rgba($color-grey, 0.85);
+
+      &--icon {
+        width: $space-decent;
+        height: $space-decent;
+        border: 6.5px solid $color-background;
+        border-top: 6.5px solid $color-main;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: $space-sub auto;
+      }
+    }
+
     &--instruction {
       font-size: calc(#{$text-mini + $text-small}/ 2);
       font-weight: 500;
@@ -211,7 +234,7 @@
   &--spinner {
     width: 100%;
     height: 100%;
-    margin: $space-small;
+    // margin: $space-small;
     padding: $space-margin 0;
 
     background-color: rgba($color-grey, 0.5);
@@ -225,5 +248,25 @@
       animation: spin 1s linear infinite;
       margin: $space-sub auto;
     }
+  }
+}
+
+.reference {
+  max-width: $max-width;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: $text-small;
+  font-weight: 400;
+  color: $color-shade;
+  background-color: $color-background;
+
+  &__header {
+    font-size: $text-mini;
+    text-align: center;
+  }
+
+  &__frame {
+    height: 85vh;
+    width: 100%;
   }
 }

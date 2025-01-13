@@ -1,0 +1,61 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    title PDF Viewer
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.min.js")
+  body
+    div(id="pdf-viewer")
+
+    script.
+      // Get the file path and starting page from the query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const pdfFilePath = urlParams.get('filePath');
+      const startPage = parseInt(urlParams.get('page'), 10);
+
+      if (pdfFilePath && startPage) {
+        // Load and render the PDF using pdfjs-lib
+        const loadingTask = pdfjsLib.getDocument(pdfFilePath);
+        loadingTask.promise.then((pdf) => {
+          const totalPages = pdf.numPages;
+
+          // Define the pages to load: 1 page before the startPage, and 5 pages after
+          let pagesToRender = [];
+
+          // Include the page before if not the first page
+          if (startPage > 1) {
+            pagesToRender.push(startPage - 1);
+          }
+
+          // Add the starting page and next 5 pages (ensure it doesn't exceed total pages)
+          for (let i = startPage; i < Math.min(startPage + 5, totalPages + 1); i++) {
+            pagesToRender.push(i);
+          }
+
+          // Loop through and load pages
+          pagesToRender.forEach((pageNum) => {
+            pdf.getPage(pageNum).then((page) => {
+              const scale = 3;
+              const viewport = page.getViewport({ scale });
+
+              const canvas = document.createElement('canvas');
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              const context = canvas.getContext('2d');
+              const renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+              };
+              page.render(renderContext);
+
+              document.getElementById('pdf-viewer').appendChild(canvas);
+            }).catch((error) => {
+              console.error(`Error loading page ${pageNum}:`, error);
+            });
+          });
+        }).catch((error) => {
+          console.error('Error loading PDF:', error);
+        });
+      } else {
+        console.error('Missing parameters: filePath or page');
+      }

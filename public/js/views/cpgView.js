@@ -183,6 +183,20 @@ class CpgView {
   }
   */
 
+  loadSpinnerInitial() {
+    const spinner = `<div class="cpg__form--spinner">
+              <div class="cpg__form--spinner--icon"></div>
+            </div>`;
+    this._cpgForm.insertAdjacentHTML("beforebegin", spinner);
+  }
+
+  hideInitialSpinner() {
+    const spinner = document.querySelector(".cpg__form--spinner");
+    if (spinner) {
+      spinner.remove();
+    }
+  }
+
   insertSpinner() {
     const spinner = `<div class="cpg__results--box--spinner">
                 <div class="cpg__results--box--spinner--icon"></div>
@@ -204,6 +218,7 @@ class CpgView {
       const markup = `<p class="cpg__results--empty">
                404 ERROR: NO RESULTS FOUND.
               </p>`;
+      this.hideInitialSpinner();
       this.loadSearchResultsPage();
 
       return this._cpgResultsBox.insertAdjacentHTML("beforeend", markup);

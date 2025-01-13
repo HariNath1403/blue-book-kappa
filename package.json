@@ -25,6 +25,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "pdfjs-dist": "^4.10.38",
+    "pug": "^3.0.3"
   }
 }

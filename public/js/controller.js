@@ -72,16 +72,27 @@ const exitCpgResultsPage = function () {
 };
 
 const loadCpgSearchResults = async function (folder, queryStr) {
-  const [folderPath, allFiles, cpqQueryStr] = cpgView.initiateSearch(
-    folder,
-    queryStr
-  );
+  try {
+    cpgView.loadSpinnerInitial();
+    const [folderPath, allFiles, cpqQueryStr] = cpgView.initiateSearch(
+      folder,
+      queryStr
+    );
 
-  if (!folderPath) return;
+    if (!folderPath) return cpgView.hideInitialSpinner();
 
-  const results = await model.searchFolders(folderPath, allFiles, cpqQueryStr);
-  cpgSearchResults = results;
-  cpgView.transferDataToTemplate(results);
+    const results = await model.searchFolders(
+      folderPath,
+      allFiles,
+      cpqQueryStr
+    );
+    cpgSearchResults = results;
+    cpgView.transferDataToTemplate(results);
+    cpgView.hideInitialSpinner();
+  } catch (error) {
+    console.error("Error loading PDF:", error);
+    cpgView.hideInitialSpinner();
+  }
 };
 
 const filterCpgSearchResults = function (file) {
@@ -101,7 +112,11 @@ const loadPdfFile = async function (file, location) {
       file,
       location
     );
-    window.open(`/guidelines/${pdfFilePath}#page=${page}`, "_blank");
+    window.open(
+      `/reference?filePath=${encodeURIComponent(
+        pdfFilePath
+      )}&page=${encodeURIComponent(page)}`
+    );
     cpgView.removeSpinner();
   } catch (error) {
     console.error("Error loading PDF:", error);

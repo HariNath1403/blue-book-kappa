@@ -4,8 +4,53 @@ html
     meta(charset="UTF-8")
     title PDF Viewer
     script(src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.min.js")
+    style.
+      /* Styling for the spinner and blurred background */
+      #spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+        z-index: 9999;
+      }
+
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+
+      #blur-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 9998;
+        display: none; /* Initially hidden */
+      }
+
+      #pdf-viewer {
+        position: relative;
+        z-index: 1;
+      }
+
   body
+    div(id="blur-background")
+    div(id="spinner")
     div(id="pdf-viewer")
+
+    // Add the download link at the bottom
+    div(id="download-link")
+      p
+        a(href=pdfFilePath, download="document.pdf") Download the full document
 
     script.
       // Get the file path and starting page from the query parameters
@@ -14,6 +59,10 @@ html
       const startPage = parseInt(urlParams.get('page'), 10);
 
       if (pdfFilePath && startPage) {
+        // Show the spinner and blur the background
+        document.getElementById('spinner').style.display = 'block';
+        document.getElementById('blur-background').style.display = 'block';
+
         // Load and render the PDF using pdfjs-lib
         const loadingTask = pdfjsLib.getDocument(pdfFilePath);
         loadingTask.promise.then((pdf) => {
@@ -32,10 +81,12 @@ html
             pagesToRender.push(i);
           }
 
+          let renderedPages = 0;
+
           // Loop through and load pages
           pagesToRender.forEach((pageNum) => {
             pdf.getPage(pageNum).then((page) => {
-              const scale = 3;
+              const scale = 3;  // Set scale to 3
               const viewport = page.getViewport({ scale });
 
               const canvas = document.createElement('canvas');
@@ -49,10 +100,22 @@ html
               page.render(renderContext);
 
               document.getElementById('pdf-viewer').appendChild(canvas);
+
+              // Scroll to the second page once rendered
+              if (renderedPages === 1) {
+                // Scroll to the second page (second canvas element)
+                canvas.scrollIntoView({ behavior: 'smooth' });
+              }
+              
+              renderedPages++;
             }).catch((error) => {
               console.error(`Error loading page ${pageNum}:`, error);
             });
           });
+
+          // After all pages are loaded, hide the spinner and remove the blur
+          document.getElementById('spinner').style.display = 'none';
+          document.getElementById('blur-background').style.display = 'none';
         }).catch((error) => {
           console.error('Error loading PDF:', error);
         });

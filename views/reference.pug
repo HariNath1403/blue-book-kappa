@@ -33,7 +33,7 @@ html
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
-        z-index: 9998;
+        z-index: 10;
         display: none; /* Initially hidden */
       }
 
@@ -46,11 +46,6 @@ html
     div(id="blur-background")
     div(id="spinner")
     div(id="pdf-viewer")
-
-    // Add the download link at the bottom
-    div(id="download-link")
-      p
-        a(href=pdfFilePath, download="document.pdf") Download the full document
 
     script.
       // Get the file path and starting page from the query parameters

@@ -145,6 +145,7 @@ const getCalculatorInfo = async function () {
 
 const filterCalculatorsLoaded = function (calculatorMaster, queryStr) {
   calculatorView.searchMatchedCalculators(calculatorMaster, queryStr);
+  afterLoadingCalcFxs();
 };
 
 const selectCalculator = function (id) {

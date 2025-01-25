@@ -222,3 +222,7 @@ export const getSnippet = function (text, query) {
 
   return snippet;
 };
+
+// Others Page
+export const checklistLink = document.getElementById("others-checklist");
+export const reportLink = document.getElementById("others-report");

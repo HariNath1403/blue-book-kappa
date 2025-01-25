@@ -44,3 +44,190 @@
     }
   }
 }
+
+.others {
+  background-color: $color-main;
+  border-top: 2px solid $color-background;
+  height: 100vh;
+}
+
+.commands {
+  padding-top: $space-standard;
+
+  &__header {
+    font-size: $text-emphasize;
+    text-align: center;
+    color: $color-background;
+  }
+
+  &__list {
+    padding: $space-margin $space-small;
+    background-color: $color-main;
+    @include flex-box-col;
+    align-items: flex-start;
+    gap: $space-sub;
+    list-style: none;
+    margin-left: $space-small;
+  }
+
+  &__index {
+    @include box-shadow;
+    width: 25rem;
+    background-color: $color-background;
+    padding: $space-supersmall $space-mini;
+
+    &--err {
+      background-color: $color-alert;
+    }
+  }
+
+  &__link {
+    font-size: $text-mini;
+    color: $color-main;
+    background-color: $color-background;
+    text-decoration: none;
+    @include flex-box-row;
+    justify-content: flex-start;
+    gap: $space-mini;
+
+    &--err {
+      background-color: $color-alert;
+      color: $color-background;
+    }
+
+    &--icon {
+      font-size: calc(#{$text-small + $text-mini}/ 2);
+    }
+  }
+}
+
+.checklist {
+  padding: $space-sub $space-supersmall;
+  background-color: $color-background;
+
+  &__header {
+    font-size: $text-standard;
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-main;
+  }
+
+  &__box {
+    margin-top: $space-mini;
+    @include flex-box-col;
+    gap: $space-supersmall;
+  }
+
+  &__language {
+    @include flex-box-row;
+    gap: $space-small;
+  }
+
+  &__slider {
+    position: relative;
+    width: $space-widegap;
+    height: $space-sub;
+
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    &--button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $color-shade;
+      transition: 0.4s;
+      border-radius: 15px;
+      cursor: pointer;
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 24px;
+        width: 24px;
+        left: 3px;
+        bottom: 3px;
+        background-color: $color-background;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+    }
+
+    &--label {
+      font-size: $text-mini;
+      font-weight: bold;
+      color: $color-alert;
+    }
+  }
+}
+
+.checklist__labels {
+  @include flex-box-row;
+  gap: $space-standard;
+
+  span {
+    width: $space-gap;
+  }
+}
+
+.checklist__slider input:checked + .checklist__slider--button {
+  background-color: $color-alert;
+}
+
+.checklist__slider input:checked + .checklist__slider--button::before {
+  transform: translateX($space-margin);
+}
+
+/* Labels for ENG and BM */
+
+#slider-label-eng {
+  color: $color-shade; /* Highlight ENG when default */
+}
+
+.checklist__slider input:checked ~ #slider-label-eng {
+  color: $color-accent;
+}
+
+.checklist__slider input:checked ~ #slider-label-bm {
+  color: $color-shade;
+}
+
+.checklist {
+  &__options {
+    @include flex-box-col;
+    align-items: flex-start;
+    gap: calc(#{$space-mini + $space-supersmall}/ 2);
+    margin-left: $space-small;
+    margin-top: $space-small;
+  }
+
+  label {
+    font-size: calc(#{$text-mini + $text-supersmall}/ 2);
+  }
+
+  &__radio {
+    font-size: $text-mini;
+    margin-right: $space-mini;
+  }
+
+  &__submit {
+    margin: $space-small auto;
+    @include flex-box-row;
+    justify-content: center;
+
+    &--btn {
+      @include box-shadow;
+      text-align: center;
+      padding: $space-supersmall $space-small;
+      font-size: $text-mini;
+      background-color: $color-shade;
+      color: $color-background;
+      border-radius: 3px;
+    }
+  }
+}

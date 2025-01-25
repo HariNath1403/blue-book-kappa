@@ -42,7 +42,7 @@
             </button>
           </li>
           <li class="nav__list--item">
-            <button class="nav__list--btn">
+            <button class="nav__list--btn" id="nav-load-others">
               <ion-icon
                 name="construct"
                 class="nav__list--btn--icon"
@@ -3420,6 +3420,191 @@
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="others" id="others">
+          <div class="commands" id="commands">
+            <h2 class="commands__header">Select One</h2>
+            <ul class="commands__list">
+              <li class="commands__index">
+                <a href="#" class="commands__link" id="others-checklist">
+                  <ion-icon
+                    name="checkbox"
+                    class="commands__link--icon"
+                  ></ion-icon>
+                  <span class="commands__link--txt">Counselling Checklist</span>
+                </a>
+              </li>
+              <li class="commands__index">
+                <a
+                  class="commands__link"
+                  id="others-interaction"
+                  href="https://www.drugs.com/drug_interactions.html"
+                  target="_blank"
+                >
+                  <ion-icon
+                    name="flask"
+                    class="commands__link--icon"
+                  ></ion-icon>
+                  <span class="commands__link--txt">Drug Interactions</span>
+                </a>
+              </li>
+              <li class="commands__index">
+                <a
+                  href="https://sites.google.com/moh.gov.my/nag"
+                  target="_blank"
+                  class="commands__link"
+                  id="others-nag"
+                >
+                  <ion-icon
+                    name="medical"
+                    class="commands__link--icon"
+                  ></ion-icon>
+                  <span class="commands__link--txt">NAG Guidelines 2024</span>
+                </a>
+              </li>
+              <li class="commands__index">
+                <a
+                  href="https://nci.moh.gov.my/index.php/ms/main-menu-2/cpg"
+                  target="_blank"
+                  class="commands__link"
+                  id="others-guidelines"
+                >
+                  <ion-icon
+                    name="server"
+                    class="commands__link--icon"
+                  ></ion-icon>
+                  <span class="commands__link--txt">All Malaysian CPGs</span>
+                </a>
+              </li>
+              <li class="commands__index commands__index--err">
+                <a
+                  href="#"
+                  class="commands__link commands__link--err"
+                  id="others-report"
+                >
+                  <ion-icon
+                    name="skull"
+                    class="commands__link--icon"
+                  ></ion-icon>
+                  <span class="commands__link--txt">Report a Problem</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="checklist hide-display" id="checklist">
+            <h2 class="checklist__header">Counselling Checklist</h2>
+            <div class="checklist__box">
+              <div class="checklist__language">
+                <label class="checklist__slider">
+                  <input type="checkbox" id="language-toggle" />
+                  <span class="checklist__slider--button"></span>
+                </label>
+              </div>
+              <div class="checklist__labels">
+                <span id="slider-label-eng" class="checklist__slider--label"
+                  >ENG</span
+                >
+                <span id="slider-label-bm" class="checklist__slider--label"
+                  >BM</span
+                >
+              </div>
+            </div>
+            <div class="checklist__options">
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="cbt"
+                />
+                Cognitive Behavioral Therapy
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="inhaler"
+                />
+                Inhaler Counselling (PF)
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="insulin"
+                />
+                Insulin Counselling (PF)
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="eczema"
+                />
+                Management of Eczema
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="hepc"
+                />
+                Management of Hepatitis C
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="hiv"
+                />
+                Management of HIV
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="tb"
+                />
+                Management of Tuberculosis
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="metha"
+                />
+                Methadone Replacement Therapy
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="prep"
+                />
+                PrEP Counselling
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="checklist__radio"
+                  name="checklist"
+                  value="warfarin"
+                />
+                Warfarin Checklist
+              </label>
+            </div>
+            <div class="checklist__submit">
+              <button class="checklist__submit--btn">Open</button>
             </div>
           </div>
         </div>

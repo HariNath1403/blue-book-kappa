@@ -5,6 +5,7 @@ import homeView from "./views/homeView.js";
 import targetView from "./views/targetView.js";
 import cpgView from "./views/cpgView.js";
 import calculatorView from "./views/calculatorView.js";
+import othersView from "./views/othersView.js";
 
 const url = config.apiUrl;
 
@@ -18,6 +19,9 @@ const navInits = function () {
   allViews.handlerLoadCalculator(() => {
     config.loadCalculator();
     getCalculatorInfo();
+  });
+  allViews.handlerLoadOthers(() => {
+    loadOthersInterface();
   });
 };
 
@@ -189,12 +193,34 @@ const initCalcFxs = function () {
   calculatorView.handlerClearDenverForm(config.clearDenverRisk);
 };
 
+// Others Page
+const loadOthersInterface = function () {
+  allViews.loadOthersPage();
+  othersView.openMainPage();
+};
+
+const launchTargetChecklist = function () {
+  const [checklist, language] = othersView.getChecklistSelection();
+  window.open(
+    `/checklist?target=${encodeURIComponent(
+      checklist
+    )}&lang=${encodeURIComponent(language)}`
+  );
+};
+
+const initOthersFxs = function () {
+  othersView.handlerNavigate();
+  othersView.handlerOpenChecklist(launchTargetChecklist);
+  othersView.handlerSendReportEmail();
+};
+
 // INIT Fxs
 navInits();
 document.addEventListener("DOMContentLoaded", initFx);
 initFormularyFxs();
 initCpgFxs();
 initCalcFxs();
+initOthersFxs();
 
 // Double-Click to EXIT App
 history.pushState(null, null, location.href);

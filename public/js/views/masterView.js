@@ -3,10 +3,12 @@ export default class Master {
   navFormulary = document.getElementById("nav-load-formulary");
   navCPGs = document.getElementById("nav-load-cpg");
   navCalculator = document.getElementById("nav-load-calculator");
+  navOthers = document.getElementById("nav-load-others");
 
   pageFormulary = document.getElementById("formulary");
   pageCPG = document.getElementById("cpg");
   pageCalculator = document.getElementById("calculator");
+  pageOthers = document.getElementById("others");
 
   // Formulary
   formularyIntro = document.querySelector(".formulary__intro");

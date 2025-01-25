@@ -851,3 +851,164 @@ body {
       .nav__list--btn--txt {
         color: #027373;
         font-weight: 500; }
+
+.others {
+  background-color: #038c7f;
+  border-top: 2px solid #f2e7dc;
+  height: 100vh; }
+
+.commands {
+  padding-top: 4.8rem; }
+  .commands__header {
+    font-size: 3.6rem;
+    text-align: center;
+    color: #f2e7dc; }
+  .commands__list {
+    padding: 5.6rem 1.8rem;
+    background-color: #038c7f;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-items: flex-start;
+    gap: 2.8rem;
+    list-style: none;
+    margin-left: 1.8rem; }
+  .commands__index {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border: none;
+    width: 25rem;
+    background-color: #f2e7dc;
+    padding: 0.6rem 1.2rem; }
+    .commands__index--err {
+      background-color: #d14545; }
+  .commands__link {
+    font-size: 1.6rem;
+    color: #038c7f;
+    background-color: #f2e7dc;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.2rem; }
+    .commands__link--err {
+      background-color: #d14545;
+      color: #f2e7dc; }
+    .commands__link--icon {
+      font-size: calc(3.6rem/ 2); }
+
+.checklist {
+  padding: 2.8rem 0.6rem;
+  background-color: #f2e7dc; }
+  .checklist__header {
+    font-size: 2.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #038c7f; }
+  .checklist__box {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem; }
+  .checklist__language {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.8rem; }
+  .checklist__slider {
+    position: relative;
+    width: 8.4rem;
+    height: 2.8rem; }
+    .checklist__slider input {
+      opacity: 0;
+      width: 0;
+      height: 0; }
+    .checklist__slider--button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #027373;
+      transition: 0.4s;
+      border-radius: 15px;
+      cursor: pointer; }
+      .checklist__slider--button::before {
+        content: "";
+        position: absolute;
+        height: 24px;
+        width: 24px;
+        left: 3px;
+        bottom: 3px;
+        background-color: #f2e7dc;
+        transition: 0.4s;
+        border-radius: 50%; }
+    .checklist__slider--label {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #d14545; }
+
+.checklist__labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4.8rem; }
+  .checklist__labels span {
+    width: 3.6rem; }
+
+.checklist__slider input:checked + .checklist__slider--button {
+  background-color: #d14545; }
+
+.checklist__slider input:checked + .checklist__slider--button::before {
+  transform: translateX(5.6rem); }
+
+/* Labels for ENG and BM */
+#slider-label-eng {
+  color: #027373;
+  /* Highlight ENG when default */ }
+
+.checklist__slider input:checked ~ #slider-label-eng {
+  color: #ffd700; }
+
+.checklist__slider input:checked ~ #slider-label-bm {
+  color: #027373; }
+
+.checklist__options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-items: flex-start;
+  gap: calc(1.8rem/ 2);
+  margin-left: 1.8rem;
+  margin-top: 1.8rem; }
+
+.checklist label {
+  font-size: calc(2.8rem/ 2); }
+
+.checklist__radio {
+  font-size: 1.6rem;
+  margin-right: 1.2rem; }
+
+.checklist__submit {
+  margin: 1.8rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center; }
+  .checklist__submit--btn {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border: none;
+    text-align: center;
+    padding: 0.6rem 1.8rem;
+    font-size: 1.6rem;
+    background-color: #027373;
+    color: #f2e7dc;
+    border-radius: 3px; }

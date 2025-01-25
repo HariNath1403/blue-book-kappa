@@ -1,7 +1,12 @@
 import Master from "./masterView.js";
 
 class AllViews extends Master {
-  _allClasses = [this.pageFormulary, this.pageCPG, this.pageCalculator];
+  _allClasses = [
+    this.pageFormulary,
+    this.pageCPG,
+    this.pageCalculator,
+    this.pageOthers,
+  ];
 
   hideAllClasses() {
     this._allClasses.forEach((page) => {
@@ -17,6 +22,11 @@ class AllViews extends Master {
   loadCPGPage() {
     this.hideAllClasses();
     this.pageCPG.classList.remove("hide-display");
+  }
+
+  loadOthersPage() {
+    this.hideAllClasses();
+    this.pageOthers.classList.remove("hide-display");
   }
 
   loadCalculatorPage() {
@@ -53,6 +63,13 @@ class AllViews extends Master {
 
   handlerLoadCalculator(handler) {
     this.navCalculator.addEventListener("click", (e) => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  handlerLoadOthers(handler) {
+    this.navOthers.addEventListener("click", (e) => {
       e.preventDefault();
       handler();
     });

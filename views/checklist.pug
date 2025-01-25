@@ -1,0 +1,111 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Blue Book Kappa | Checklist
+    style.
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2e7dc;
+        color: #027373;
+        line-height: 1.6; /* Increase line height for better readability */
+      }
+
+      header {
+        background-color: #038c7f;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      table {
+        width: 90%;
+        margin: 2rem auto;
+        border-collapse: collapse;
+        background-color: white;
+        border: 1px solid #027373;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      th, td {
+        padding: 1rem;
+        text-align: left;
+        border: 1px solid #027373;
+        line-height: 1.6; /* Increase line height for table text */
+      }
+
+      th {
+        background-color: #038c7f;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .alert {
+        color: #d14545;
+      }
+
+      /* Mobile View Adjustments */
+      @media (max-width: 768px) {
+        body {
+          padding: 0 1rem;
+        }
+
+        table {
+          width: 100%;
+          margin: 1rem auto;
+        }
+
+        th, td {
+          padding: 0.8rem;
+          font-size: 14px;
+        }
+
+        header {
+          padding: 1rem;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .alert {
+          font-size: 14px;
+        }
+      }
+
+      /* Further mobile optimizations for very small screens */
+      @media (max-width: 480px) {
+        table {
+          font-size: 12px;
+        }
+
+        th, td {
+          padding: 0.6rem;
+        }
+
+        h1 {
+          font-size: 1.2rem;
+        }
+      }
+
+  body
+    header
+      h1= selectedRef.language[language].header
+    table
+      each point in selectedRef.language[language].points
+        tr
+          th= point.title
+          if Array.isArray(point.details)
+            td
+              ul
+                each detail in point.details
+                  li= detail
+          else
+            td= point.details

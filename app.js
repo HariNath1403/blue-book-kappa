@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
-const refRouter = require("./router/refRouter");
 const AppError = require("./controller/appError");
+const checklist = require("./controller/checklist");
 
 const app = express();
 app.use(cors());
@@ -21,19 +21,29 @@ app.use((req, res, next) => {
   next();
 });
 
-// Example Express route for rendering PDF
 app.get("/reference", (req, res) => {
   const { filePath, page } = req.query;
 
-  // Check if the parameters exist
   if (filePath && page) {
     res.render("reference", {
-      filePath: filePath, // Path to the PDF file
-      startPage: parseInt(page, 10), // Starting page to load
+      filePath: filePath,
+      startPage: parseInt(page, 10),
     });
   } else {
-    // Handle the case where parameters are missing
     res.status(400).send("Missing parameters: filePath or page");
+  }
+});
+
+app.get("/checklist", (req, res) => {
+  const { target, lang } = req.query;
+
+  if (target && lang) {
+    res.render("checklist", {
+      selectedRef: checklist[target],
+      language: lang,
+    });
+  } else {
+    res.status(400).send("Missing parameters");
   }
 });
 

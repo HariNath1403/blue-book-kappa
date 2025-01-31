@@ -90,6 +90,10 @@ class TargetView extends Master {
       /\bmaximum|max\b/gi,
       "<strong>MAXIMUM</strong>"
     );
+    formattedText = formattedText.replace(
+      /\bStep\s?(\d+)\b/gi,
+      "<strong>STEP $1</strong>"
+    );
     return formattedText;
   }
 

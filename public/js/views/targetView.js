@@ -65,6 +65,8 @@ class TargetView extends Master {
 
     formattedText = formattedText.replace(initialBreak, "<br>$&");
 
+    formattedText = formattedText.replace("BREAK", "<br>");
+
     const maintenanceBreak = /(Maintenance|Usual maintenance|MAINTENANCE)/g;
     formattedText = formattedText.replace(maintenanceBreak, "<br>$&");
 
